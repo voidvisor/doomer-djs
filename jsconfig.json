@@ -3,7 +3,28 @@
   "manager": "Bank Administration",
   "users": [],
   "weekly": [],
-  "ranks": [],
+  "ranks": [
+    {
+      "rank": "Senior Banker",
+      "quota": "1200000"
+    },
+    {
+      "rank": "Experienced Banker",
+      "quota": "1000000"
+    },
+    {
+      "rank": "Banker",
+      "quota": "800000"
+    },
+    {
+      "rank": "Junior Banker",
+      "quota": "600000"
+    },
+    {
+      "rank": "New Banker",
+      "quota": "400000"
+    }
+  ],
   "lastdata": {
     "messageid": "804081133477560393"
   }
