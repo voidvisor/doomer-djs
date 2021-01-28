@@ -87,6 +87,7 @@ client.on('ready', () => {
         var finalStamp = time - totalStamp
         return finalStamp
     }
+    if (typeof logchannel != 'undefined) {
     var messageData = lots_of_messages_getter(logchannel, 5500)
     console.log(messageData);
     messageData.then(function (result) {
@@ -198,6 +199,7 @@ client.on('ready', () => {
                 }
             }
     })
+    }
 });
 client.on('message', msg => {
     var jsonfile = fs.readFileSync(jsonname);
