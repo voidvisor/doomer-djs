@@ -91,7 +91,7 @@ client.on('ready', () => {
         var messageData = lots_of_messages_getter(logchannel, 5500)
         console.log(messageData);
         messageData.then(function (result) {
-            console.log(result)
+            //console.log(result)
             var jsonfile = fs.readFileSync(jsonname);
             var obj = JSON.parse(jsonfile);
             var jsonfile2 = fs.readFileSync(jsonname2);
