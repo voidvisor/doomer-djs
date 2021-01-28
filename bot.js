@@ -39,7 +39,7 @@ client.on('ready', () => {
         }, firstTriggerAfterMs);
     }
     scheduleReset("02:00", resetWeekly)
-    let logchannel = client.channels.cache.get("669998643515883520");
+    let logchannel = client.channels.cache.get("669998643515883520"/*"693830200672387072"*/);
     async function lots_of_messages_getter(channel, limit = 6000) {
         const sum_messages = [];
         let last_id;
@@ -70,38 +70,38 @@ client.on('ready', () => {
         var h = now.getHours();
         var time = now.getTime();
         if (n == 0) {
-            var dayStamp = 86400 * 6*1000
+            var dayStamp = 86400 * 6 * 1000
         } else if (n > 1) {
-            var dayStamp = 86400 * (n - 1)*1000
+            var dayStamp = 86400 * (n - 1) * 1000
         } else {
             var dayStamp = 0
         }
         if (h == 0) {
-            var hourStamp = -3600 * 2*1000
+            var hourStamp = -3600 * 2 * 1000
         } else if (h > 2) {
-            var hourStamp = 3600 * (h - 2)*1000
+            var hourStamp = 3600 * (h - 2) * 1000
         } else if (h == 1) {
-            var hourStamp = -3600 * h*1000
+            var hourStamp = -3600 * h * 1000
         }
         var totalStamp = hourStamp + dayStamp
         var finalStamp = time - totalStamp
         return finalStamp
     }
     if (typeof logchannel != 'undefined') {
-    var messageData = lots_of_messages_getter(logchannel, 5500)
-    console.log(messageData);
-    messageData.then(function (result) {
-        console.log(result)
-        var jsonfile = fs.readFileSync(jsonname);
-        var obj = JSON.parse(jsonfile);
-        var jsonfile2 = fs.readFileSync(jsonname2);
-        var obj2 = JSON.parse(jsonfile2);
-        obj2.messages = result
-        fs.writeFile(jsonname2, JSON.stringify(obj2, null, 2), function writeJSON(err) {
-            if (err) return console.log(err);
-            //console.log(JSON.stringify(obj2));
-            console.log('writing to ' + jsonname2);
-        });
+        var messageData = lots_of_messages_getter(logchannel, 5)
+        console.log(messageData);
+        messageData.then(function (result) {
+            console.log(result)
+            var jsonfile = fs.readFileSync(jsonname);
+            var obj = JSON.parse(jsonfile);
+            var jsonfile2 = fs.readFileSync(jsonname2);
+            var obj2 = JSON.parse(jsonfile2);
+            obj2.messages = result
+            fs.writeFile(jsonname2, JSON.stringify(obj2, null, 2), function writeJSON(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(obj2));
+                console.log('writing to ' + jsonname2);
+            });
             if (obj.lastdata.messageid == obj2.messages[0].id) {
                 console.log('no messages while bot was offline.')
                 fs.writeFile(jsonname2, JSON.stringify(obj2, null, 2), function writeJSON(err) {
@@ -111,26 +111,26 @@ client.on('ready', () => {
                 });
             } else {
                 for (var i = 0; i < obj2.messages.length; i++) {
-                    let logchannel = client.channels.cache.get("669998643515883520");
+                    let logchannel = client.channels.cache.get("669998643515883520"/*"693830200672387072"*/);
                     let logmessage = logchannel.messages.fetch(`${obj2.messages[i].id}`)
                     console.log(logmessage)
                     logmessage.then(function (result) {
-                        if (result.content.startsWith('Worked at the Bank and')) {
+                        if (result.content.startsWith('**Worked** at the Bank and')) {
                             var parts1 = result.author.username.split("(")
                             var loguser = parts1[0]
                             var theid = parts1[1]
                             var logid = theid.slice(0, -1)
                             var parts2 = result.content.split(" ")
                             var moneh = parts2[7].split("k")
-                            var realmoneh = parseFloat(moneh[0]) * 1000
-                        } else if (result.content.startsWith('Worked at the Bank but')) {
+                            var realmoneh = parseFloat(moneh[0].substring(2)) * 1000
+                        } else if (result.content.startsWith('**Worked** at the Bank but')) {
                             var parts1 = result.author.username.split("(")
                             var loguser = parts1[0]
                             var theid = parts1[1]
                             var logid = theid.slice(0, -1)
                             var parts2 = result.content.split(" ")
                             var lostmoneh = parts2[6].split("$")
-                            var realmoneh = parseInt(lostmoneh[0])
+                            var realmoneh = parseInt(lostmoneh[0].substring(2))
                         }
                         function findTotal() {
                             for (var i = 0; i < obj.users.length; i++) {
@@ -162,7 +162,7 @@ client.on('ready', () => {
                             }
                             fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
                                 if (err) return console.log(err);
-                                console.log(JSON.stringify(obj));
+                                //console.log(JSON.stringify(obj));
                                 console.log('writing to ' + jsonname);
                             });
                         } else {
@@ -179,7 +179,7 @@ client.on('ready', () => {
                             }
                             fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
                                 if (err) return console.log(err);
-                                console.log(JSON.stringify(obj));
+                                //console.log(JSON.stringify(obj));
                                 console.log('writing to ' + jsonname);
                             });
                         }
@@ -198,7 +198,7 @@ client.on('ready', () => {
                     }
                 }
             }
-    })
+        })
     }
 });
 client.on('message', msg => {
@@ -445,23 +445,23 @@ client.on('message', msg => {
         } else {
             msg.reply('insufficient permissions.')
         }
-    } else if (msg.channel.id == "669998643515883520") {
-        if (msg.content.startsWith('Worked at the Bank and')) {
-            var parts1 = msg.author.username.split("(")
+    } else if (/*msg.channel.id == "669998643515883520"*/msg.channel.id == "693830200672387072") {
+        if (result.content.startsWith('**Worked** at the Bank and')) {
+            var parts1 = result.author.username.split("(")
             var loguser = parts1[0]
             var theid = parts1[1]
             var logid = theid.slice(0, -1)
-            var parts2 = msg.content.split(" ")
+            var parts2 = result.content.split(" ")
             var moneh = parts2[7].split("k")
-            var realmoneh = parseFloat(moneh[0]) * 1000
-        } else if (msg.content.startsWith('Worked at the Bank but')) {
-            var parts1 = msg.author.username.split("(")
+            var realmoneh = parseFloat(moneh[0].substring(2)) * 1000
+        } else if (result.content.startsWith('**Worked** at the Bank but')) {
+            var parts1 = result.author.username.split("(")
             var loguser = parts1[0]
             var theid = parts1[1]
             var logid = theid.slice(0, -1)
-            var parts2 = msg.content.split(" ")
+            var parts2 = result.content.split(" ")
             var lostmoneh = parts2[6].split("$")
-            var realmoneh = parseInt(lostmoneh[0])
+            var realmoneh = parseInt(lostmoneh[0].substring(2))
         }
         function findTotal() {
             for (var i = 0; i < obj.users.length; i++) {
