@@ -1,0 +1,11 @@
+{
+  "name": "Doomer",
+  "version": "0.0.1",
+  "description": "Doomer bot for Doom Bank",
+  "author": {
+    "name": "vonotige"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
