@@ -39,7 +39,7 @@ client.on('ready', () => {
         }, firstTriggerAfterMs);
     }
     scheduleReset("02:00", resetWeekly)
-    let logchannel = client.channels.cache.get(/*"669998643515883520"*/"693830200672387072");
+    let logchannel = client.channels.cache.get("669998643515883520");
     async function lots_of_messages_getter(channel, limit = 6000) {
         const sum_messages = [];
         let last_id;
@@ -111,7 +111,7 @@ client.on('ready', () => {
                 });
             } else {
                 for (var i = 0; i < obj2.messages.length; i++) {
-                    let logchannel = client.channels.cache.get(/*"669998643515883520"*/"693830200672387072");
+                    let logchannel = client.channels.cache.get("669998643515883520");
                     let logmessage = logchannel.messages.fetch(`${obj2.messages[i].id}`)
                     console.log(logmessage)
                     logmessage.then(function (result) {
@@ -445,7 +445,7 @@ client.on('message', msg => {
         } else {
             msg.reply('insufficient permissions.')
         }
-    } else if (msg.channel.id == /*"669998643515883520"*/"693830200672387072") {
+    } else if (msg.channel.id == "669998643515883520") {
         if (msg.content.startsWith('Worked at the Bank and')) {
             var parts1 = msg.author.username.split("(")
             var loguser = parts1[0]
