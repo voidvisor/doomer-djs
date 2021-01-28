@@ -88,7 +88,7 @@ client.on('ready', () => {
         return finalStamp
     }
     if (typeof logchannel != 'undefined') {
-        var messageData = lots_of_messages_getter(logchannel, 5)
+        var messageData = lots_of_messages_getter(logchannel, 5500)
         console.log(messageData);
         messageData.then(function (result) {
             console.log(result)
