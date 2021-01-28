@@ -1,42 +1,9 @@
 {
   "prefix": ".",
   "manager": "BoomerDoomer",
-  "users": [
-    {
-      "username": "SpieleMaus",
-      "userid": "420",
-      "printed": "1051500",
-      "discordid": ""
-    },
-    {
-      "username": "vonotige",
-      "userid": "123",
-      "printed": "750000",
-      "discordid": "186432451915153408"
-    }
-  ],
-  "weekly": [
-    {
-      "username": "SpieleMaus",
-      "userid": "420",
-      "printed": "600000"
-    },
-    {
-      "username": "vonotige",
-      "userid": "123",
-      "printed": "750000"
-    }
-  ],
-  "ranks": [
-    {
-      "rank": "BoomerDoomer",
-      "quota": "400000"
-    },
-    {
-      "rank": "idiot",
-      "quota": "250"
-    }
-  ],
+  "users": [],
+  "weekly": [],
+  "ranks": [],
   "lastdata": {
     "messageid": "804081133477560393"
   }
