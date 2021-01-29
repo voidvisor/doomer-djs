@@ -590,6 +590,29 @@ client.on('message', msg => {
             msg.reply('insufficient permissions.')
         }
     } else if (msg.channel.id == "669998643515883520"/*msg.channel.id == "693830200672387072"*/) {
+        function timeSinceReset() {
+        var now = new Date();
+        var n = now.getDay();
+        var h = now.getHours();
+        var time = now.getTime();
+        if (n == 0) {
+            var dayStamp = 86400 * 6 * 1000
+        } else if (n > 1) {
+            var dayStamp = 86400 * (n - 1) * 1000
+        } else {
+            var dayStamp = 0
+        }
+        if (h == 0) {
+            var hourStamp = -3600 * 2 * 1000
+        } else if (h > 2) {
+            var hourStamp = 3600 * (h - 2) * 1000
+        } else if (h == 1) {
+            var hourStamp = -3600 * h * 1000
+        }
+        var totalStamp = hourStamp + dayStamp
+        var finalStamp = time - totalStamp
+        return finalStamp
+    }
         if (msg.content.startsWith('**Worked** at the Bank and')) {
             var parts1 = msg.author.username.split("(")
             var loguser = parts1[0]
