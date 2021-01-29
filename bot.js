@@ -14,7 +14,7 @@ client.on('ready', () => {
             obj.weekly[i].printed = "0"
         }
         console.log("Weekly reset initiated.")
-        fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+        fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
             if (err) return console.log(err);
             console.log(JSON.stringify(obj));
             console.log('writing to ' + jsonname);
@@ -88,23 +88,23 @@ client.on('ready', () => {
         return finalStamp
     }
     if (typeof logchannel != 'undefined') {
-        var messageData = lots_of_messages_getter(logchannel, 5500)
+        var messageData = lots_of_messages_getter(logchannel, 500)
         console.log(messageData);
         messageData.then(function (result) {
-            //console.log(result)
+            console.log(result)
             var jsonfile = fs.readFileSync(jsonname);
             var obj = JSON.parse(jsonfile);
             var jsonfile2 = fs.readFileSync(jsonname2);
             var obj2 = JSON.parse(jsonfile2);
             obj2.messages = result
-            fs.writeFile(jsonname2, JSON.stringify(obj2, null, 2), function writeJSON(err) {
+            fs.writeFile(jsonname2, JSON.stringify(obj2, undefined, 2), function writeJSON(err) {
                 if (err) return console.log(err);
                 //console.log(JSON.stringify(obj2));
                 console.log('writing to ' + jsonname2);
             });
             if (obj.lastdata.messageid == obj2.messages[0].id) {
                 console.log('no messages while bot was offline.')
-                fs.writeFile(jsonname2, JSON.stringify(obj2, null, 2), function writeJSON(err) {
+                fs.writeFile(jsonname2, JSON.stringify(obj2, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj2));
                     console.log('writing to ' + jsonname2);
@@ -115,80 +115,224 @@ client.on('ready', () => {
                     let logmessage = logchannel.messages.fetch(`${obj2.messages[i].id}`)
                     console.log(logmessage)
                     logmessage.then(function (result) {
-                        if (result.content.startsWith('**Worked** at the Bank and')) {
-                            var parts1 = result.author.username.split("(")
-                            var loguser = parts1[0]
-                            var theid = parts1[1]
-                            var logid = theid.slice(0, -1)
-                            var parts2 = result.content.split(" ")
-                            var moneh = parts2[7].split("k")
-                            var realmoneh = parseFloat(moneh[0].substring(2)) * 1000
-                        } else if (result.content.startsWith('**Worked** at the Bank but')) {
-                            var parts1 = result.author.username.split("(")
-                            var loguser = parts1[0]
-                            var theid = parts1[1]
-                            var logid = theid.slice(0, -1)
-                            var parts2 = result.content.split(" ")
-                            var lostmoneh = parts2[6].split("$")
-                            var realmoneh = parseInt(lostmoneh[0].substring(2))
-                        }
-                        function findTotal() {
-                            for (var i = 0; i < obj.users.length; i++) {
-                                if (obj.users[i].userid == logid) {
-                                    return obj.users[i].userid
+                        if (typeof result != 'undefined') {
+                            if (result.content.startsWith('**Worked** at the Bank and')) {
+                                var parts1 = result.author.username.split("(")
+                                var loguser = parts1[0]
+                                var theid = parts1[1]
+                                var logid = theid.slice(0, -1)
+                                var parts2 = result.content.split(" ")
+                                var moneh = parts2[7].split("$")
+                                if (moneh[0].charAt(moneh[0].length - 1) == 'k') {
+                                    var moneh = parts2[7].split("k")
+                                    var realmoneh = parseFloat(moneh[0].substring(2)) * 1000
+                                } else {
+                                    var realmoneh = parseFloat(moneh[0].substring(2))
                                 }
-                            }
-                        }
-                        var checker = findTotal()
-                        if (typeof checker == 'string') {
-                            function findIndex() {
-                                for (var i = 0; i < obj.users.length; i++) {
-                                    if (obj.users[i].userid == logid) {
-                                        return i
+                                function findTotal() {
+                                    for (var i = 0; i < obj.users.length; i++) {
+                                        if (obj.users[i].userid == logid) {
+                                            return obj.users[i].userid
+                                        }
                                     }
                                 }
+                                function findTotal2() {
+                                    for (var i = 0; i < obj.weekly.length; i++) {
+                                        if (obj.weekly[i].userid == logid) {
+                                            return obj.weekly[i].userid
+                                        }
+                                    }
+                                }
+                                var checker = findTotal()
+                                var checker2 = findTotal2()
+                                if (typeof checker == 'string' && typeof checker2 == 'string') {
+                                    function findIndex() {
+                                        for (var i = 0; i < obj.users.length; i++) {
+                                            if (obj.users[i].userid == logid) {
+                                                return i
+                                            }
+                                        }
+                                    }
+                                    function findIndex2() {
+                                        for (var i = 0; i < obj.weekly.length; i++) {
+                                            if (obj.weekly[i].userid == logid) {
+                                                return i
+                                            }
+                                        }
+                                    }
+                                    var userindex = findIndex()
+                                    var userindex2 = findIndex2()
+                                    var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                                    var weeklyprint = parseInt(obj.weekly[userindex2].printed) + realmoneh
+                                    var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                                    var myobj1 = JSON.parse(myjson1)
+                                    obj.users[userindex] = myobj1;
+                                    var resetTime = timeSinceReset()
+                                    if (result.createdTimestamp > resetTime) {
+                                        var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                                        console.log(`${myjson2} success.`)
+                                        var myobj2 = JSON.parse(myjson2)
+                                        obj.weekly[userindex2] = myobj2;
+                                    }
+                                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                                        if (err) return console.log(err);
+                                        //console.log(JSON.stringify(obj));
+                                        console.log('writing to ' + jsonname);
+                                    });
+                                } else if (typeof checker == 'string' && typeof checker2 != 'string') {
+                                    function findIndex() {
+                                        for (var i = 0; i < obj.users.length; i++) {
+                                            if (obj.users[i].userid == logid) {
+                                                return i
+                                            }
+                                        }
+                                    }
+                                    var userindex = findIndex()
+                                    var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                                    var weeklyprint = realmoneh
+                                    var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                                    var myobj1 = JSON.parse(myjson1)
+                                    obj.users[userindex] = myobj1;
+                                    var resetTime = timeSinceReset()
+                                    if (result.createdTimestamp > resetTime) {
+                                        var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                                        console.log(`${myjson2} failed.`)
+                                        var myobj2 = JSON.parse(myjson2)
+                                        obj.weekly[obj.weekly.length] = myobj2;
+                                    }
+                                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                                        if (err) return console.log(err);
+                                        //console.log(JSON.stringify(obj));
+                                        console.log('writing to ' + jsonname);
+                                    });
+                                } else {
+                                    var totalprint = realmoneh
+                                    var weeklyprint = realmoneh
+                                    var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
+                                    var myobj1 = JSON.parse(myjson1)
+                                    obj.users[obj.users.length] = myobj1;
+                                    var resetTime = timeSinceReset()
+                                    if (result.createdTimestamp > resetTime) {
+                                        var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                                        var myobj2 = JSON.parse(myjson2)
+                                        obj.weekly[obj.weekly.length] = myobj2;
+                                    }
+                                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                                        if (err) return console.log(err);
+                                        //console.log(JSON.stringify(obj));
+                                        console.log('writing to ' + jsonname);
+                                    });
+                                }
+                            } else if (result.content.startsWith('**Worked** at the Bank but')) {
+                                var parts1 = result.author.username.split("(")
+                                var loguser = parts1[0]
+                                var theid = parts1[1]
+                                var logid = theid.slice(0, -1)
+                                var parts2 = result.content.split(" ")
+                                var lostmoneh = parts2[6].split("$")
+                                var realmoneh = parseInt(lostmoneh[0].substring(2))
+                                function findTotal() {
+                                    for (var i = 0; i < obj.users.length; i++) {
+                                        if (obj.users[i].userid == logid) {
+                                            return obj.users[i].userid
+                                        }
+                                    }
+                                }
+                                function findTotal2() {
+                                    for (var i = 0; i < obj.weekly.length; i++) {
+                                        if (obj.weekly[i].userid == logid) {
+                                            return obj.weekly[i].userid
+                                        }
+                                    }
+                                }
+                                var checker = findTotal()
+                                var checker2 = findTotal2()
+                                if (typeof checker == 'string' && typeof checker2 == 'string') {
+                                    function findIndex() {
+                                        for (var i = 0; i < obj.users.length; i++) {
+                                            if (obj.users[i].userid == logid) {
+                                                return i
+                                            }
+                                        }
+                                    }
+                                    function findIndex2() {
+                                        for (var i = 0; i < obj.weekly.length; i++) {
+                                            if (obj.weekly[i].userid == logid) {
+                                                return i
+                                            }
+                                        }
+                                    }
+                                    var userindex = findIndex()
+                                    var userindex2 = findIndex2()
+                                    var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                                    var weeklyprint = parseInt(obj.weekly[userindex2].printed) + realmoneh
+                                    var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                                    var myobj1 = JSON.parse(myjson1)
+                                    obj.users[userindex] = myobj1;
+                                    var resetTime = timeSinceReset()
+                                    if (result.createdTimestamp > resetTime) {
+                                        var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                                        var myobj2 = JSON.parse(myjson2)
+                                        obj.weekly[userindex2] = myobj2;
+                                    }
+                                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                                        if (err) return console.log(err);
+                                        //console.log(JSON.stringify(obj));
+                                        console.log('writing to ' + jsonname);
+                                    });
+                                } else if (typeof checker == 'string' && typeof checker2 != 'string') {
+                                    function findIndex() {
+                                        for (var i = 0; i < obj.users.length; i++) {
+                                            if (obj.users[i].userid == logid) {
+                                                return i
+                                            }
+                                        }
+                                    }
+                                    var userindex = findIndex()
+                                    var userindex = findIndex()
+                                    var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                                    var weeklyprint = realmoneh
+                                    var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                                    var myobj1 = JSON.parse(myjson1)
+                                    obj.users[userindex] = myobj1;
+                                    var resetTime = timeSinceReset()
+                                    if (result.createdTimestamp > resetTime) {
+                                        var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                                        console.log(`${myjson2} failed.`)
+                                        var myobj2 = JSON.parse(myjson2)
+                                        obj.weekly[obj.weekly.length] = myobj2;
+                                    }
+                                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                                        if (err) return console.log(err);
+                                        //console.log(JSON.stringify(obj));
+                                        console.log('writing to ' + jsonname);
+                                    });
+                                } else {
+                                    var totalprint = realmoneh
+                                    var weeklyprint = realmoneh
+                                    var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
+                                    var myobj1 = JSON.parse(myjson1)
+                                    obj.users[obj.users.length] = myobj1;
+                                    var resetTime = timeSinceReset()
+                                    if (result.createdTimestamp > resetTime) {
+                                        var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                                        var myobj2 = JSON.parse(myjson2)
+                                        obj.weekly[obj.weekly.length] = myobj2;
+                                    }
+                                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                                        if (err) return console.log(err);
+                                        //console.log(JSON.stringify(obj));
+                                        console.log('writing to ' + jsonname);
+                                    });
+                                }
                             }
-                            var userindex = findIndex()
-                            var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
-                            var weeklyprint = parseInt(obj.weekly[userindex].printed) + realmoneh
-                            var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
-                            var myobj1 = JSON.parse(myjson1)
-                            obj.users[userindex] = myobj1;
-                            var resetTime = timeSinceReset()
-                            if (result.createdTimestamp > resetTime) {
-                                var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
-                                var myobj2 = JSON.parse(myjson2)
-                                obj.weekly[userindex] = myobj2;
-                            }
-                            fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
-                                if (err) return console.log(err);
-                                //console.log(JSON.stringify(obj));
-                                console.log('writing to ' + jsonname);
-                            });
-                        } else {
-                            var totalprint = realmoneh
-                            var weeklyprint = realmoneh
-                            var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
-                            var myobj1 = JSON.parse(myjson1)
-                            obj.users[obj.users.length] = myobj1;
-                            var resetTime = timeSinceReset()
-                            if (result.createdTimestamp > resetTime) {
-                                var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
-                                var myobj2 = JSON.parse(myjson2)
-                                obj.weekly[obj.weekly.length] = myobj2;
-                            }
-                            fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
-                                if (err) return console.log(err);
-                                //console.log(JSON.stringify(obj));
-                                console.log('writing to ' + jsonname);
-                            });
                         }
                     })
                     if (obj2.messages[i + 1].id == obj.lastdata.messageid) {
                         var lastjson = `{"messageid":"${obj2.messages[0].id}"}`
                         var lastobj = JSON.parse(lastjson)
                         obj.lastdata = lastobj
-                        fs.writeFile(jsonname2, JSON.stringify(obj2, null, 2), function writeJSON(err) {
+                        fs.writeFile(jsonname2, JSON.stringify(obj2, undefined, 2), function writeJSON(err) {
                             if (err) return console.log(err);
                             //console.log(JSON.stringify(obj2));
                             console.log('writing to ' + jsonname2);
@@ -210,7 +354,7 @@ client.on('message', msg => {
             var parts = msg.content.split(" ");
             obj.prefix = parts[1];
             if (typeof obj.prefix == 'string') {
-                fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     console.log(JSON.stringify(obj));
                     console.log('writing to ' + jsonname);
@@ -243,7 +387,7 @@ client.on('message', msg => {
             }
             var userIndex = findIndex()
             if (typeof userIndex == 'number') {
-                if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string') {
+                if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
                     var person = msg.guild.members.cache.get(obj.users[userIndex].discordid)
                     function findLimit() {
                         for (var i = 0; i < obj.ranks.length; i++) {
@@ -365,7 +509,7 @@ client.on('message', msg => {
             var parts = msg.content.split(" ");
             obj.manager = parts[1];
             if (typeof obj.manager == 'string') {
-                fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     console.log(JSON.stringify(obj));
                     console.log('writing to ' + jsonname);
@@ -401,7 +545,7 @@ client.on('message', msg => {
                     var myjson = `{"rank":"${therank}", "quota":"${thequota}"}`
                     var myobj = JSON.parse(myjson)
                     obj.ranks[obj.ranks.length] = myobj;
-                    fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                         if (err) return console.log(err);
                         console.log(JSON.stringify(obj));
                         console.log('writing to ' + jsonname);
@@ -424,7 +568,7 @@ client.on('message', msg => {
                         }
                     }
                     obj.ranks[findIndex()] = myobj;
-                    fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                    fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                         if (err) return console.log(err);
                         console.log(JSON.stringify(obj));
                         console.log('writing to ' + jsonname);
@@ -445,74 +589,216 @@ client.on('message', msg => {
         } else {
             msg.reply('insufficient permissions.')
         }
-    } else if (/*msg.channel.id == "669998643515883520"*/msg.channel.id == "693830200672387072") {
-        if (result.content.startsWith('**Worked** at the Bank and')) {
-            var parts1 = result.author.username.split("(")
+    } else if (msg.channel.id == "669998643515883520"/*msg.channel.id == "693830200672387072"*/) {
+        if (msg.content.startsWith('**Worked** at the Bank and')) {
+            var parts1 = msg.author.username.split("(")
             var loguser = parts1[0]
             var theid = parts1[1]
             var logid = theid.slice(0, -1)
-            var parts2 = result.content.split(" ")
-            var moneh = parts2[7].split("k")
-            var realmoneh = parseFloat(moneh[0].substring(2)) * 1000
-        } else if (result.content.startsWith('**Worked** at the Bank but')) {
-            var parts1 = result.author.username.split("(")
-            var loguser = parts1[0]
-            var theid = parts1[1]
-            var logid = theid.slice(0, -1)
-            var parts2 = result.content.split(" ")
-            var lostmoneh = parts2[6].split("$")
-            var realmoneh = parseInt(lostmoneh[0].substring(2))
-        }
-        function findTotal() {
-            for (var i = 0; i < obj.users.length; i++) {
-                if (obj.users[i].userid == logid) {
-                    return obj.users[i].userid
-                }
+            var parts2 = msg.content.split(" ")
+            var moneh = parts2[7].split("$")
+            if (moneh[0].charAt(moneh[0].length - 1) == 'k') {
+                var moneh = parts2[7].split("k")
+                var realmoneh = parseFloat(moneh[0].substring(2)) * 1000
+            } else {
+                var realmoneh = parseFloat(moneh[0].substring(2))
             }
-        }
-        var checker = findTotal()
-        if (typeof checker == 'string') {
-            function findIndex() {
+            function findTotal() {
                 for (var i = 0; i < obj.users.length; i++) {
                     if (obj.users[i].userid == logid) {
-                        return i
+                        return obj.users[i].userid
                     }
                 }
             }
-            var userindex = findIndex()
-            var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
-            var weeklyprint = parseInt(obj.weekly[userindex].printed) + realmoneh
-            var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discorid": "${obj.users[userindex].discordid}"}`
-            var myobj1 = JSON.parse(myjson1)
-            obj.users[userindex] = myobj1;
-            var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
-            var myobj2 = JSON.parse(myjson2)
-            obj.weekly[userindex] = myobj2;
-            var lastjson = `{"messageid":"${msg.id}"}`
-            var lastobj = JSON.parse(lastjson)
-            obj.lastdata = lastobj
-            fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
-                if (err) return console.log(err);
-                console.log(JSON.stringify(obj));
-                console.log('writing to ' + jsonname);
-            });
-        } else {
-            var totalprint = realmoneh
-            var weeklyprint = realmoneh
-            var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
-            var myobj1 = JSON.parse(myjson1)
-            obj.users[obj.users.length] = myobj1;
-            var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
-            var myobj2 = JSON.parse(myjson2)
-            obj.weekly[obj.weekly.length] = myobj2;
-            var lastjson = `{"messageid":"${msg.id}"}`
-            var lastobj = JSON.parse(lastjson)
-            obj.lastdata = lastobj
-            fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
-                if (err) return console.log(err);
-                console.log(JSON.stringify(obj));
-                console.log('writing to ' + jsonname);
-            });
+            function findTotal2() {
+                for (var i = 0; i < obj.weekly.length; i++) {
+                    if (obj.weekly[i].userid == logid) {
+                        return obj.weekly[i].userid
+                    }
+                }
+            }
+            var checker = findTotal()
+            var checker2 = findTotal2()
+            if (typeof checker == 'string' && typeof checker2 == 'string') {
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (obj.users[i].userid == logid) {
+                            return i
+                        }
+                    }
+                }
+                function findIndex2() {
+                    for (var i = 0; i < obj.weekly.length; i++) {
+                        if (obj.weekly[i].userid == logid) {
+                            return i
+                        }
+                    }
+                }
+                var userindex = findIndex()
+                var userindex2 = findIndex2()
+                var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                var weeklyprint = parseInt(obj.weekly[userindex2].printed) + realmoneh
+                var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                var myobj1 = JSON.parse(myjson1)
+                obj.users[userindex] = myobj1;
+                var resetTime = timeSinceReset()
+                if (msg.createdTimestamp > resetTime) {
+                    var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                    console.log(`${myjson2} success.`)
+                    var myobj2 = JSON.parse(myjson2)
+                    obj.weekly[userindex2] = myobj2;
+                }
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                    if (err) return console.log(err);
+                    //console.log(JSON.stringify(obj));
+                    console.log('writing to ' + jsonname);
+                });
+            } else if (typeof checker == 'string' && typeof checker2 != 'string') {
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (obj.users[i].userid == logid) {
+                            return i
+                        }
+                    }
+                }
+                var userindex = findIndex()
+                var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                var weeklyprint = realmoneh
+                var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                var myobj1 = JSON.parse(myjson1)
+                obj.users[userindex] = myobj1;
+                var resetTime = timeSinceReset()
+                if (msg.createdTimestamp > resetTime) {
+                    var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                    console.log(`${myjson2} failed.`)
+                    var myobj2 = JSON.parse(myjson2)
+                    obj.weekly[obj.weekly.length] = myobj2;
+                }
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                    if (err) return console.log(err);
+                    //console.log(JSON.stringify(obj));
+                    console.log('writing to ' + jsonname);
+                });
+            } else {
+                var totalprint = realmoneh
+                var weeklyprint = realmoneh
+                var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
+                var myobj1 = JSON.parse(myjson1)
+                obj.users[obj.users.length] = myobj1;
+                var resetTime = timeSinceReset()
+                if (msg.createdTimestamp > resetTime) {
+                    var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                    var myobj2 = JSON.parse(myjson2)
+                    obj.weekly[obj.weekly.length] = myobj2;
+                }
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                    if (err) return console.log(err);
+                    //console.log(JSON.stringify(obj));
+                    console.log('writing to ' + jsonname);
+                });
+            }
+        } else if (msg.content.startsWith('**Worked** at the Bank but')) {
+            var parts1 = msg.author.username.split("(")
+            var loguser = parts1[0]
+            var theid = parts1[1]
+            var logid = theid.slice(0, -1)
+            var parts2 = msg.content.split(" ")
+            var lostmoneh = parts2[6].split("$")
+            var realmoneh = parseInt(lostmoneh[0].substring(2))
+            function findTotal() {
+                for (var i = 0; i < obj.users.length; i++) {
+                    if (obj.users[i].userid == logid) {
+                        return obj.users[i].userid
+                    }
+                }
+            }
+            function findTotal2() {
+                for (var i = 0; i < obj.weekly.length; i++) {
+                    if (obj.weekly[i].userid == logid) {
+                        return obj.weekly[i].userid
+                    }
+                }
+            }
+            var checker = findTotal()
+            var checker2 = findTotal2()
+            if (typeof checker == 'string' && typeof checker2 == 'string') {
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (obj.users[i].userid == logid) {
+                            return i
+                        }
+                    }
+                }
+                function findIndex2() {
+                    for (var i = 0; i < obj.weekly.length; i++) {
+                        if (obj.weekly[i].userid == logid) {
+                            return i
+                        }
+                    }
+                }
+                var userindex = findIndex()
+                var userindex2 = findIndex2()
+                var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                var weeklyprint = parseInt(obj.weekly[userindex2].printed) + realmoneh
+                var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                var myobj1 = JSON.parse(myjson1)
+                obj.users[userindex] = myobj1;
+                var resetTime = timeSinceReset()
+                if (msg.createdTimestamp > resetTime) {
+                    var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                    var myobj2 = JSON.parse(myjson2)
+                    obj.weekly[userindex2] = myobj2;
+                }
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                    if (err) return console.log(err);
+                    //console.log(JSON.stringify(obj));
+                    console.log('writing to ' + jsonname);
+                });
+            } else if (typeof checker == 'string' && typeof checker2 != 'string') {
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (obj.users[i].userid == logid) {
+                            return i
+                        }
+                    }
+                }
+                var userindex = findIndex()
+                var userindex = findIndex()
+                var totalprint = parseInt(obj.users[userindex].printed) + realmoneh
+                var weeklyprint = realmoneh
+                var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}", "discordid": "${obj.users[userindex].discordid}"}`
+                var myobj1 = JSON.parse(myjson1)
+                obj.users[userindex] = myobj1;
+                var resetTime = timeSinceReset()
+                if (msg.createdTimestamp > resetTime) {
+                    var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                    console.log(`${myjson2} failed.`)
+                    var myobj2 = JSON.parse(myjson2)
+                    obj.weekly[obj.weekly.length] = myobj2;
+                }
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                    if (err) return console.log(err);
+                    //console.log(JSON.stringify(obj));
+                    console.log('writing to ' + jsonname);
+                });
+            } else {
+                var totalprint = realmoneh
+                var weeklyprint = realmoneh
+                var myjson1 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${totalprint}"}`
+                var myobj1 = JSON.parse(myjson1)
+                obj.users[obj.users.length] = myobj1;
+                var resetTime = timeSinceReset()
+                if (msg.createdTimestamp > resetTime) {
+                    var myjson2 = `{"username":"${loguser}", "userid":"${logid}", "printed":"${weeklyprint}"}`
+                    var myobj2 = JSON.parse(myjson2)
+                    obj.weekly[obj.weekly.length] = myobj2;
+                }
+                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                    if (err) return console.log(err);
+                    //console.log(JSON.stringify(obj));
+                    console.log('writing to ' + jsonname);
+                });
+            }
         }
     } else if (msg.content.startsWith(prefix + 'link')) {
         var parts = msg.content.split(" ");
@@ -538,7 +824,7 @@ client.on('message', msg => {
                     }
                 }
                 var userIndex = findIndex()
-                if (typeof obj.users[userIndex].discordid == 'undefined' || obj.users[userIndex].discordid == '') {
+                if (typeof obj.users[userIndex].discordid == 'undefined' || obj.users[userIndex].discordid == '' || obj.users[userIndex].discordid == 'undefined') {
                     function findDiscord() {
                         for (var i = 0; i < obj.users.length; i++) {
                             if (obj.users[i].discordid == msg.author.id) {
@@ -547,11 +833,11 @@ client.on('message', msg => {
                         }
                     }
                     var disChecker = findDiscord()
-                    if (typeof disChecker == 'undefined') {
+                    if (typeof disChecker == 'undefined' || obj.users[userIndex].discordid == 'undefined') {
                         var userjson = `{"username": "${obj.users[userIndex].username}","userid": "${obj.users[userIndex].userid}","printed": "${obj.users[userIndex].printed}","discordid": "${disid}"}`
                         var userparse = JSON.parse(userjson)
                         obj.users[userIndex] = userparse
-                        fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                        fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                             if (err) return console.log(err);
                             console.log(JSON.stringify(obj));
                             console.log('writing to ' + jsonname);
@@ -589,7 +875,7 @@ client.on('message', msg => {
 
                     msg.channel.send(embed);
                 } else {
-                    if (obj.users[userIndex].discordid != '') {
+                    if (obj.users[userIndex].discordid != '' || obj.users[userIndex].discordid == 'undefined') {
                         var embed = new Discord.MessageEmbed()
                             .setTitle("**Access Denied**")
                             .setDescription(`Only <@${obj.users[userIndex].discordid}> can manage their linked Discord account.`)
@@ -628,7 +914,7 @@ client.on('message', msg => {
         var userIndex = findIndex()
         if (typeof userIndex == 'number') {
             obj.users[userIndex].discordid = ""
-            fs.writeFile(jsonname, JSON.stringify(obj, null, 2), function writeJSON(err) {
+            fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                 if (err) return console.log(err);
                 console.log(JSON.stringify(obj));
                 console.log('writing to ' + jsonname);
