@@ -1,8 +1,1652 @@
 {
   "prefix": ".",
   "manager": "Bank Administration",
-  "users": [],
-  "weekly": [],
+  "users": [
+    {
+      "username": "zalanka1112",
+      "userid": "246110211",
+      "printed": "1848552",
+      "discordid": "undefined"
+    },
+    {
+      "username": "adhrianjoaquin1real1",
+      "userid": "691362389",
+      "printed": "2831033",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Al3x1c",
+      "userid": "1214204821",
+      "printed": "511100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "SpieleMaus",
+      "userid": "442993585",
+      "printed": "3834605",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Green5tar",
+      "userid": "225432730",
+      "printed": "2846779",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ItIsTimeToGetSerious",
+      "userid": "84547907",
+      "printed": "482718",
+      "discordid": "undefined"
+    },
+    {
+      "username": "idogaming007",
+      "userid": "117218171",
+      "printed": "212680",
+      "discordid": "undefined"
+    },
+    {
+      "username": "mejedi023_pc",
+      "userid": "448307406",
+      "printed": "53600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Klooni1",
+      "userid": "44903742",
+      "printed": "1907212",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ArmyOfIsrael",
+      "userid": "103312686",
+      "printed": "352493",
+      "discordid": "undefined"
+    },
+    {
+      "username": "son1c_4567",
+      "userid": "948833794",
+      "printed": "916450",
+      "discordid": "undefined"
+    },
+    {
+      "username": "wizz1111",
+      "userid": "429772866",
+      "printed": "50700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ottc2007",
+      "userid": "130353311",
+      "printed": "390500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Infamous_Zack",
+      "userid": "167293150",
+      "printed": "93119",
+      "discordid": "undefined"
+    },
+    {
+      "username": "RitualTuba2003",
+      "userid": "488153691",
+      "printed": "148788",
+      "discordid": "undefined"
+    },
+    {
+      "username": "H_ydraulico",
+      "userid": "78744948",
+      "printed": "93950",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Oxarp",
+      "userid": "116787937",
+      "printed": "17644",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ArtyomZ01",
+      "userid": "2223178964",
+      "printed": "69777",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DW2D4Y",
+      "userid": "1794087333",
+      "printed": "136200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "bumper2121222",
+      "userid": "2248287916",
+      "printed": "94900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "jerrydjdj",
+      "userid": "589856223",
+      "printed": "199505",
+      "discordid": "undefined"
+    },
+    {
+      "username": "amj04",
+      "userid": "66134114",
+      "printed": "623500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "lucaslepro22",
+      "userid": "875853925",
+      "printed": "3676525",
+      "discordid": "undefined"
+    },
+    {
+      "username": "RobotBro60",
+      "userid": "61497552",
+      "printed": "669127",
+      "discordid": "undefined"
+    },
+    {
+      "username": "yasserxx505",
+      "userid": "122774108",
+      "printed": "242400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "celian360",
+      "userid": "569030963",
+      "printed": "60400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "HErik2007",
+      "userid": "250578204",
+      "printed": "2657700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "7kHxll",
+      "userid": "1268587292",
+      "printed": "695870",
+      "discordid": "undefined"
+    },
+    {
+      "username": "KronosSilvius",
+      "userid": "556574078",
+      "printed": "182467",
+      "discordid": "undefined"
+    },
+    {
+      "username": "miles7282",
+      "userid": "677936166",
+      "printed": "178900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "jyukk",
+      "userid": "130221778",
+      "printed": "474740",
+      "discordid": "undefined"
+    },
+    {
+      "username": "fitrianda2010",
+      "userid": "1160166135",
+      "printed": "176100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "HarvkenSpan",
+      "userid": "554803938",
+      "printed": "844694",
+      "discordid": "undefined"
+    },
+    {
+      "username": "bangbongpingpong",
+      "userid": "1369235439",
+      "printed": "-27913",
+      "discordid": "undefined"
+    },
+    {
+      "username": "jssjdPL",
+      "userid": "437384252",
+      "printed": "685100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "matteiutz1",
+      "userid": "160757927",
+      "printed": "10850",
+      "discordid": "undefined"
+    },
+    {
+      "username": "vonotige",
+      "userid": "97196768",
+      "printed": "1658650",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Dorukylie",
+      "userid": "1797108890",
+      "printed": "16700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "KentonVH",
+      "userid": "681853545",
+      "printed": "289775",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Profituber",
+      "userid": "183633358",
+      "printed": "886800",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Olivierkowalczyk29",
+      "userid": "280778204",
+      "printed": "278587",
+      "discordid": "undefined"
+    },
+    {
+      "username": "frederikvendelbo12",
+      "userid": "56685361",
+      "printed": "2716000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Robiloxnoob",
+      "userid": "1766645736",
+      "printed": "1160180",
+      "discordid": "undefined"
+    },
+    {
+      "username": "tiago2006j",
+      "userid": "1117826821",
+      "printed": "52860",
+      "discordid": "undefined"
+    },
+    {
+      "username": "icychasy",
+      "userid": "80471670",
+      "printed": "733700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Ghostlegion2",
+      "userid": "555578029",
+      "printed": "-14673",
+      "discordid": "undefined"
+    },
+    {
+      "username": "superbuya123",
+      "userid": "123223140",
+      "printed": "2013437",
+      "discordid": "undefined"
+    },
+    {
+      "username": "allof_usban",
+      "userid": "740117176",
+      "printed": "588550",
+      "discordid": "undefined"
+    },
+    {
+      "username": "nicknasi",
+      "userid": "190306487",
+      "printed": "81900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "SKillSor",
+      "userid": "321613459",
+      "printed": "1066800",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Gattarats",
+      "userid": "145517274",
+      "printed": "1097400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Killerskyblock",
+      "userid": "1632465637",
+      "printed": "291300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Baggin01",
+      "userid": "106703412",
+      "printed": "2413500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "VenmanBrothernow",
+      "userid": "1893630301",
+      "printed": "324879",
+      "discordid": "undefined"
+    },
+    {
+      "username": "panzer_warlock",
+      "userid": "123179992",
+      "printed": "587022",
+      "discordid": "undefined"
+    },
+    {
+      "username": "RoLunax",
+      "userid": "1634018426",
+      "printed": "3663400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Yankee_withnobrim457",
+      "userid": "1731881206",
+      "printed": "403500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "vilaigeur2000",
+      "userid": "452116734",
+      "printed": "50950",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Tornadoway",
+      "userid": "1008236833",
+      "printed": "28600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "brenzo998",
+      "userid": "523639004",
+      "printed": "-8013",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Trooper_Bousho",
+      "userid": "360388145",
+      "printed": "37400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "domi_pro123",
+      "userid": "510751168",
+      "printed": "60750",
+      "discordid": "undefined"
+    },
+    {
+      "username": "BESTaWesomeGUy_YT",
+      "userid": "345315023",
+      "printed": "603290",
+      "discordid": "undefined"
+    },
+    {
+      "username": "gta5playerpr",
+      "userid": "350942522",
+      "printed": "4669",
+      "discordid": "undefined"
+    },
+    {
+      "username": "steve128taz",
+      "userid": "509967653",
+      "printed": "373825",
+      "discordid": "undefined"
+    },
+    {
+      "username": "csokicsen007",
+      "userid": "377087339",
+      "printed": "157100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "fixingbeny0015",
+      "userid": "284862356",
+      "printed": "17000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "julek122123",
+      "userid": "574351131",
+      "printed": "33757",
+      "discordid": "undefined"
+    },
+    {
+      "username": "freelybox",
+      "userid": "523256051",
+      "printed": "93700"
+    },
+    {
+      "username": "williamlinusss",
+      "userid": "366179374",
+      "printed": "660025",
+      "discordid": "undefined"
+    },
+    {
+      "username": "roborovski_hamster1",
+      "userid": "1064419223",
+      "printed": "4646267",
+      "discordid": "undefined"
+    },
+    {
+      "username": "B_DYi",
+      "userid": "447765337",
+      "printed": "158850",
+      "discordid": "undefined"
+    },
+    {
+      "username": "marci906",
+      "userid": "429338272",
+      "printed": "630200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Teverlox",
+      "userid": "1977602908",
+      "printed": "1131117",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Ice_Phox",
+      "userid": "273542564",
+      "printed": "-950"
+    },
+    {
+      "username": "ruperbro789",
+      "userid": "144150574",
+      "printed": "937120",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DangerousDuty",
+      "userid": "150644348",
+      "printed": "26600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "morcken86",
+      "userid": "874267807",
+      "printed": "119100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Uboichan",
+      "userid": "650838972",
+      "printed": "20500"
+    },
+    {
+      "username": "CommanderDmitriy",
+      "userid": "1588788024",
+      "printed": "104000"
+    },
+    {
+      "username": "RIPETIME",
+      "userid": "90899349",
+      "printed": "138915",
+      "discordid": "undefined"
+    },
+    {
+      "username": "8y5j",
+      "userid": "138242517",
+      "printed": "219800",
+      "discordid": "undefined"
+    },
+    {
+      "username": "CraZy_Joker99",
+      "userid": "171288746",
+      "printed": "781000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "worldatwar281",
+      "userid": "96123872",
+      "printed": "4810699",
+      "discordid": "undefined"
+    },
+    {
+      "username": "kkujumnhughtydfrtr",
+      "userid": "670447478",
+      "printed": "1229882",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Shadowsred1337",
+      "userid": "1668319082",
+      "printed": "76302",
+      "discordid": "undefined"
+    },
+    {
+      "username": "BaconHairLover6652",
+      "userid": "965547328",
+      "printed": "273847",
+      "discordid": "undefined"
+    },
+    {
+      "username": "thinkgamerproZ",
+      "userid": "295786918",
+      "printed": "4516271",
+      "discordid": "undefined"
+    },
+    {
+      "username": "linctheballer",
+      "userid": "118923975",
+      "printed": "232675",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Beautifull_OB",
+      "userid": "695794003",
+      "printed": "43675",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DistantN3bula",
+      "userid": "1734981954",
+      "printed": "330917",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Alikhan201102",
+      "userid": "1447513756",
+      "printed": "57070",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DeputyPremie",
+      "userid": "1424090058",
+      "printed": "-80265",
+      "discordid": "undefined"
+    },
+    {
+      "username": "gezweg",
+      "userid": "461836791",
+      "printed": "5823",
+      "discordid": "undefined"
+    },
+    {
+      "username": "mik340q",
+      "userid": "53175950",
+      "printed": "111857",
+      "discordid": "undefined"
+    },
+    {
+      "username": "nitrotog",
+      "userid": "1125937491",
+      "printed": "548725",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Tristanlox",
+      "userid": "630443524",
+      "printed": "221772",
+      "discordid": "undefined"
+    },
+    {
+      "username": "AttilaMaster007",
+      "userid": "174860702",
+      "printed": "14917424",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Kocoureeek",
+      "userid": "180070780",
+      "printed": "1899178",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ninto_1",
+      "userid": "185071868",
+      "printed": "138200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "PetiDayOf",
+      "userid": "1199101220",
+      "printed": "1500"
+    },
+    {
+      "username": "epicghaster",
+      "userid": "139788731",
+      "printed": "1178200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Aurelio12345678910",
+      "userid": "86865308",
+      "printed": "314305",
+      "discordid": "undefined"
+    },
+    {
+      "username": "SliminhoVR",
+      "userid": "1394654261",
+      "printed": "82100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Kf637",
+      "userid": "149310380",
+      "printed": "5674700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "RazPVPGames",
+      "userid": "166895765",
+      "printed": "1705900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ngage1225",
+      "userid": "1124312478",
+      "printed": "130400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "AGENT_KEY45",
+      "userid": "1940677743",
+      "printed": "51360",
+      "discordid": "undefined"
+    },
+    {
+      "username": "buildcraft10",
+      "userid": "105944051",
+      "printed": "127200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "kavin55555",
+      "userid": "171981301",
+      "printed": "156617",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Byrellac2112_v2",
+      "userid": "1087588204",
+      "printed": "-33979"
+    },
+    {
+      "username": "SpieleMausHasValue",
+      "userid": "2021955099",
+      "printed": "41700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Mabuhay17",
+      "userid": "225502576",
+      "printed": "181",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Jeo_Ale",
+      "userid": "1743357010",
+      "printed": "67096",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DRAGON4IK_PLAY",
+      "userid": "324978757",
+      "printed": "265700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Avlukas",
+      "userid": "1150363532",
+      "printed": "3538200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "NOWAKOWSKI123456",
+      "userid": "1489528409",
+      "printed": "1020556",
+      "discordid": "undefined"
+    },
+    {
+      "username": "micajoker2",
+      "userid": "1235891902",
+      "printed": "259797",
+      "discordid": "undefined"
+    },
+    {
+      "username": "KikiLeCon",
+      "userid": "826991453",
+      "printed": "1180327",
+      "discordid": "undefined"
+    },
+    {
+      "username": "perajebog",
+      "userid": "1048182086",
+      "printed": "83428",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Nathen20170",
+      "userid": "226303103",
+      "printed": "30900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "usta56454",
+      "userid": "1579927674",
+      "printed": "194600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "NiklasLp1308",
+      "userid": "195599015",
+      "printed": "80600"
+    },
+    {
+      "username": "cookobow90",
+      "userid": "905657271",
+      "printed": "794007",
+      "discordid": "undefined"
+    },
+    {
+      "username": "GuestOfKogama",
+      "userid": "1050921083",
+      "printed": "910900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "thewergiogamer",
+      "userid": "120025259",
+      "printed": "61400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "AnomalyGuy333",
+      "userid": "1490809212",
+      "printed": "38000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TheOddLittleKid",
+      "userid": "551025171",
+      "printed": "3125648",
+      "discordid": "undefined"
+    },
+    {
+      "username": "taunter1",
+      "userid": "1086494082",
+      "printed": "393013",
+      "discordid": "undefined"
+    },
+    {
+      "username": "UnfixableError",
+      "userid": "42563018",
+      "printed": "182900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Kiritoo03",
+      "userid": "1146688655",
+      "printed": "16000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Krut888",
+      "userid": "455476068",
+      "printed": "356304",
+      "discordid": "undefined"
+    },
+    {
+      "username": "tezaylol300fb_TR",
+      "userid": "175462737",
+      "printed": "172001",
+      "discordid": "undefined"
+    },
+    {
+      "username": "StateTrooper_354",
+      "userid": "986437418",
+      "printed": "78421",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Caiqicheng1",
+      "userid": "531990936",
+      "printed": "255400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TheUnexpectedMan1",
+      "userid": "1665804140",
+      "printed": "78648",
+      "discordid": "undefined"
+    },
+    {
+      "username": "matrix0154",
+      "userid": "1702304577",
+      "printed": "102300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "twoknuckles11",
+      "userid": "100837431",
+      "printed": "73500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "AudaciousLord",
+      "userid": "1406740376",
+      "printed": "147275",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Pond_Hi",
+      "userid": "181296038",
+      "printed": "1508340",
+      "discordid": "undefined"
+    },
+    {
+      "username": "PodiszkaYT",
+      "userid": "254662271",
+      "printed": "55696",
+      "discordid": "undefined"
+    },
+    {
+      "username": "watsontaylor",
+      "userid": "12311848",
+      "printed": "-62233",
+      "discordid": "undefined"
+    },
+    {
+      "username": "FearBrutality",
+      "userid": "172652845",
+      "printed": "12800"
+    },
+    {
+      "username": "LEGENDE9273773",
+      "userid": "1337227911",
+      "printed": "233032",
+      "discordid": "undefined"
+    },
+    {
+      "username": "SG_Druzs",
+      "userid": "314442900",
+      "printed": "11108",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TTVroblox12i",
+      "userid": "1237633072",
+      "printed": "231400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "jakiesnake06",
+      "userid": "300522859",
+      "printed": "124100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "thepugfist",
+      "userid": "168437330",
+      "printed": "-56302",
+      "discordid": "undefined"
+    },
+    {
+      "username": "4F0ns0",
+      "userid": "72020527",
+      "printed": "126341",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Amosalon",
+      "userid": "93486761",
+      "printed": "-98946",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TheDarkDestroyer51",
+      "userid": "378646942",
+      "printed": "66497",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Eric_fostjr",
+      "userid": "920072538",
+      "printed": "66475",
+      "discordid": "undefined"
+    },
+    {
+      "username": "NoMoreGoodNamesRLeft",
+      "userid": "469635350",
+      "printed": "187156",
+      "discordid": "undefined"
+    },
+    {
+      "username": "AnLopTest",
+      "userid": "1245548177",
+      "printed": "332600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "bricker777",
+      "userid": "62753520",
+      "printed": "80590",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Trickion1209",
+      "userid": "1003464416",
+      "printed": "12800"
+    },
+    {
+      "username": "XxvortexXX666",
+      "userid": "1787841124",
+      "printed": "42574",
+      "discordid": "undefined"
+    },
+    {
+      "username": "123zcmc",
+      "userid": "608257285",
+      "printed": "47490",
+      "discordid": "undefined"
+    },
+    {
+      "username": "MasterDoge9111",
+      "userid": "196027095",
+      "printed": "128200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Lewis_Bubba",
+      "userid": "87762548",
+      "printed": "345253",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Yuurtttt",
+      "userid": "1567108209",
+      "printed": "80250",
+      "discordid": "undefined"
+    },
+    {
+      "username": "david3561235612",
+      "userid": "1041753618",
+      "printed": "181400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "michael1adnan",
+      "userid": "40667556",
+      "printed": "379592",
+      "discordid": "undefined"
+    },
+    {
+      "username": "LovingBroshooter",
+      "userid": "217074253",
+      "printed": "190500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "crniteowl",
+      "userid": "246333575",
+      "printed": "30300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Dezert_Panther",
+      "userid": "1153877206",
+      "printed": "41200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "CroatiaRobloxGamer89",
+      "userid": "1098128472",
+      "printed": "15500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DANNYmaktabi123",
+      "userid": "86704922",
+      "printed": "198230",
+      "discordid": "undefined"
+    },
+    {
+      "username": "rileypleasant308",
+      "userid": "201399367",
+      "printed": "25700"
+    },
+    {
+      "username": "mr_jacktran",
+      "userid": "114924129",
+      "printed": "304121",
+      "discordid": "undefined"
+    },
+    {
+      "username": "EvanLoooL",
+      "userid": "149590060",
+      "printed": "752124",
+      "discordid": "undefined"
+    },
+    {
+      "username": "treemakernuu",
+      "userid": "213865705",
+      "printed": "168900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Gage0808",
+      "userid": "65374456",
+      "printed": "210400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Dentorix",
+      "userid": "129622003",
+      "printed": "22166",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Funpark22",
+      "userid": "137559255",
+      "printed": "40475",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ninjahyper3000",
+      "userid": "547568794",
+      "printed": "257988",
+      "discordid": "undefined"
+    },
+    {
+      "username": "feaver_alt",
+      "userid": "936017138",
+      "printed": "3600"
+    },
+    {
+      "username": "Smartguy10134",
+      "userid": "1127993487",
+      "printed": "395900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Doge_Pilots",
+      "userid": "586609417",
+      "printed": "-295",
+      "discordid": "undefined"
+    },
+    {
+      "username": "BigManRufus",
+      "userid": "284681586",
+      "printed": "-14250",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TheRandomGuy501",
+      "userid": "462528888",
+      "printed": "45400"
+    },
+    {
+      "username": "Tangothomas",
+      "userid": "27710067",
+      "printed": "808000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "VirgoValorius",
+      "userid": "408239461",
+      "printed": "558700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "gabe0800",
+      "userid": "368626361",
+      "printed": "1171650",
+      "discordid": "undefined"
+    },
+    {
+      "username": "gamer_guy373",
+      "userid": "523415229",
+      "printed": "16272927",
+      "discordid": "undefined"
+    },
+    {
+      "username": "RBGamingGame",
+      "userid": "105268798",
+      "printed": "238000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "DIDARIYO",
+      "userid": "117371900",
+      "printed": "2152792",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Notyouorme20000",
+      "userid": "1548403737",
+      "printed": "345200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "QuiltedArmour",
+      "userid": "234244239",
+      "printed": "3947200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Shark_boss27",
+      "userid": "447187010",
+      "printed": "675400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "aznking707o",
+      "userid": "846542482",
+      "printed": "600324",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Leonid_Kharitono",
+      "userid": "1406247108",
+      "printed": "607500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Nattysparky",
+      "userid": "20711328",
+      "printed": "2250000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "LeBoxs_YT",
+      "userid": "682729692",
+      "printed": "1102100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "caligamerdope123",
+      "userid": "484495344",
+      "printed": "14430",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Expert007_RU",
+      "userid": "916179355",
+      "printed": "446200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "tomtomthealien",
+      "userid": "524051731",
+      "printed": "2872900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "WildeRaze",
+      "userid": "98739985",
+      "printed": "1851500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "cbgame9876",
+      "userid": "307050143",
+      "printed": "662000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "SweetGirl_ITZ",
+      "userid": "1503605676",
+      "printed": "667500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Ladstein",
+      "userid": "112050641",
+      "printed": "30500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Tricky_Dior",
+      "userid": "1630699757",
+      "printed": "571300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "pepineboss1",
+      "userid": "1086752349",
+      "printed": "625300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "birdypotato",
+      "userid": "997669919",
+      "printed": "198000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "gtrrtg60",
+      "userid": "431934954",
+      "printed": "874399",
+      "discordid": "undefined"
+    },
+    {
+      "username": "younespounes7",
+      "userid": "220044238",
+      "printed": "15875",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TrooperRob",
+      "userid": "358602049",
+      "printed": "102300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "lule34567",
+      "userid": "321049970",
+      "printed": "789675",
+      "discordid": "undefined"
+    },
+    {
+      "username": "LadenCoin22",
+      "userid": "1173719897",
+      "printed": "3815510",
+      "discordid": "undefined"
+    },
+    {
+      "username": "jamesbonn113",
+      "userid": "47939789",
+      "printed": "986300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Jeffry021",
+      "userid": "281618890",
+      "printed": "2462700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "game2512",
+      "userid": "72000955",
+      "printed": "1076500",
+      "discordid": "undefined"
+    },
+    {
+      "username": "stefansupergames3",
+      "userid": "463713254",
+      "printed": "1078600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "alexmowooo",
+      "userid": "141473617",
+      "printed": "899321",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Sk_mask6",
+      "userid": "1007111911",
+      "printed": "428900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ggigkhghy",
+      "userid": "322292509",
+      "printed": "1480000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "2008nicksantos",
+      "userid": "71056183",
+      "printed": "1333435",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Coolguy23232222",
+      "userid": "1179013301",
+      "printed": "1022700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "christmas67923",
+      "userid": "616448430",
+      "printed": "623300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "iiColonelLaw",
+      "userid": "445331312",
+      "printed": "131890",
+      "discordid": "undefined"
+    },
+    {
+      "username": "OhCamperCampe_r",
+      "userid": "1029989975",
+      "printed": "119890",
+      "discordid": "undefined"
+    },
+    {
+      "username": "guojiang",
+      "userid": "173562737",
+      "printed": "589700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Martianman61",
+      "userid": "404417097",
+      "printed": "410800",
+      "discordid": "undefined"
+    },
+    {
+      "username": "dumbyj",
+      "userid": "151369114",
+      "printed": "872400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "SealQR",
+      "userid": "1592778887",
+      "printed": "285000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "extremebiker333",
+      "userid": "49160835",
+      "printed": "320000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "IBauerGaming",
+      "userid": "117744881",
+      "printed": "276400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "cooldudeofitaly",
+      "userid": "1133647067",
+      "printed": "252300",
+      "discordid": "undefined"
+    },
+    {
+      "username": "JackBossGF",
+      "userid": "587989082",
+      "printed": "205700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Emircskn436",
+      "userid": "174525905",
+      "printed": "1171400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "TheChaosity",
+      "userid": "1178306201",
+      "printed": "49400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "treeforfree123",
+      "userid": "306067372",
+      "printed": "20200"
+    },
+    {
+      "username": "DeathCakeofCakes",
+      "userid": "110433528",
+      "printed": "27000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Epicface021007",
+      "userid": "102819653",
+      "printed": "302425",
+      "discordid": "undefined"
+    },
+    {
+      "username": "yopop80",
+      "userid": "529745731",
+      "printed": "273600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Joman9911",
+      "userid": "105387195",
+      "printed": "1145200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "polizeileon",
+      "userid": "209945152",
+      "printed": "102600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "fletcher5264",
+      "userid": "67811741",
+      "printed": "96400",
+      "discordid": "undefined"
+    },
+    {
+      "username": "BombPL",
+      "userid": "31834274",
+      "printed": "122000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "LeoJB04",
+      "userid": "33655715",
+      "printed": "69600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Evhn",
+      "userid": "139319296",
+      "printed": "57700"
+    },
+    {
+      "username": "uuuyyyhhjjki2",
+      "userid": "391534026",
+      "printed": "1921850",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Awesome_0A",
+      "userid": "338759916",
+      "printed": "107946",
+      "discordid": "undefined"
+    },
+    {
+      "username": "GoofyUnableBanana",
+      "userid": "141935972",
+      "printed": "1526900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "crushorange564",
+      "userid": "72837656",
+      "printed": "63700",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Jarolin",
+      "userid": "23985795",
+      "printed": "1124800",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Sky_Lar054",
+      "userid": "1288751258",
+      "printed": "246200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "Sirusdog",
+      "userid": "116226311",
+      "printed": "414600",
+      "discordid": "undefined"
+    },
+    {
+      "username": "sidexplosion",
+      "userid": "128458553",
+      "printed": "103200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "AlexPlaysLP",
+      "userid": "199824156",
+      "printed": "399100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "OmqItzMeBendy",
+      "userid": "310144426",
+      "printed": "142000",
+      "discordid": "undefined"
+    },
+    {
+      "username": "HazardSama",
+      "userid": "30738281",
+      "printed": "7300"
+    },
+    {
+      "username": "dunkerbunker_bot",
+      "userid": "701173979",
+      "printed": "197100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "ThatAwesomeDorito",
+      "userid": "121081295",
+      "printed": "26700"
+    },
+    {
+      "username": "oukkat",
+      "userid": "430105971",
+      "printed": "49100",
+      "discordid": "undefined"
+    },
+    {
+      "username": "bigaxe1",
+      "userid": "104124627",
+      "printed": "58900",
+      "discordid": "undefined"
+    },
+    {
+      "username": "HaHevo_HD",
+      "userid": "386772611",
+      "printed": "17863",
+      "discordid": "undefined"
+    },
+    {
+      "username": "EvilBossgamer",
+      "userid": "104849338",
+      "printed": "21900"
+    },
+    {
+      "username": "albertodelacasa",
+      "userid": "691587995",
+      "printed": "119200",
+      "discordid": "undefined"
+    },
+    {
+      "username": "widfs",
+      "userid": "71807647",
+      "printed": "9700"
+    }
+  ],
+  "weekly": [
+    {
+      "username": "ArtyomZ01",
+      "userid": "2223178964",
+      "printed": "69777"
+    },
+    {
+      "username": "DW2D4Y",
+      "userid": "1794087333",
+      "printed": "36800"
+    },
+    {
+      "username": "bumper2121222",
+      "userid": "2248287916",
+      "printed": "94900"
+    },
+    {
+      "username": "jerrydjdj",
+      "userid": "589856223",
+      "printed": "7505"
+    },
+    {
+      "username": "amj04",
+      "userid": "66134114",
+      "printed": "72300"
+    },
+    {
+      "username": "lucaslepro22",
+      "userid": "875853925",
+      "printed": "194800"
+    },
+    {
+      "username": "RobotBro60",
+      "userid": "61497552",
+      "printed": "26300"
+    },
+    {
+      "username": "yasserxx505",
+      "userid": "122774108",
+      "printed": "128200"
+    },
+    {
+      "username": "celian360",
+      "userid": "569030963",
+      "printed": "60400"
+    },
+    {
+      "username": "HErik2007",
+      "userid": "250578204",
+      "printed": "27600"
+    },
+    {
+      "username": "7kHxll",
+      "userid": "1268587292",
+      "printed": "151007"
+    },
+    {
+      "username": "KronosSilvius",
+      "userid": "556574078",
+      "printed": "147386"
+    },
+    {
+      "username": "miles7282",
+      "userid": "677936166",
+      "printed": "178900"
+    },
+    {
+      "username": "jyukk",
+      "userid": "130221778",
+      "printed": "410700"
+    },
+    {
+      "username": "fitrianda2010",
+      "userid": "1160166135",
+      "printed": "21900"
+    },
+    {
+      "username": "HarvkenSpan",
+      "userid": "554803938",
+      "printed": "16700"
+    },
+    {
+      "username": "bangbongpingpong",
+      "userid": "1369235439",
+      "printed": "540"
+    },
+    {
+      "username": "jssjdPL",
+      "userid": "437384252",
+      "printed": "44100"
+    },
+    {
+      "username": "matteiutz1",
+      "userid": "160757927",
+      "printed": "26000"
+    },
+    {
+      "username": "Robiloxnoob",
+      "userid": "1766645736",
+      "printed": "33500"
+    }
+  ],
   "ranks": [
     {
       "rank": "Senior Banker",
@@ -26,6 +1670,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "804081133477560393"
+    "messageid": "804707916061474836"
   }
 }
