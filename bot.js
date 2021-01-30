@@ -10,7 +10,51 @@ client.on('ready', () => {
     function resetWeekly() {
         var jsonfile = fs.readFileSync(jsonname);
         var obj = JSON.parse(jsonfile);
+        let quotachannel = client.channels.cache.get("778312068164091974");
+        var mainServer = client.guilds.get("657255154273484801");
+        var positivelist = []
+        var negativelist = []
         for (var i = 0; i < obj.weekly.length; i++) {
+            if (obj.weekly[i].printed != '0') {
+                var username = obj.weekly[i].username
+                var userid = obj.weekly[i].userid
+                var printed = parseInt(obj.weekly[i].printed)
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (username == obj.users[i].username) {
+                            return i
+                        }
+                    }
+                }
+                var userIndex = findIndex()
+                if (typeof userIndex == 'number') {
+                    if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
+                        var person = mainServer.members.cache.get(obj.users[userIndex].discordid)
+                        function findLimit() {
+                            for (var i = 0; i < obj.ranks.length; i++) {
+                                if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                    return obj.ranks[i].quota;
+                                }
+                            }
+                        }
+                        var needed = parseInt(findLimit())
+                    }
+                }
+                if (typeof needed != 'undefined') {
+                    var percent = printed / needed * 100
+                    if (printed >= needed) {
+                        var bonus = (printed - needed) * 0.01
+                    } else {
+                        var bonus = 0
+                    }
+                }
+                var toPush = { name: `${username}(${userid})`, value: `${printed}/${needed}$ (${percent}) Bonus:${bonus}$`, inline: true }
+                if (printed > 0) {
+                    positivelist.push(toPush)
+                } else {
+                    negativelist.push(toPush)
+                }
+            }
             obj.weekly[i].printed = "0"
         }
         console.log("Weekly reset initiated.")
@@ -19,6 +63,17 @@ client.on('ready', () => {
             console.log(JSON.stringify(obj));
             console.log('writing to ' + jsonname);
         });
+        var embed = new Discord.MessageEmbed()
+            .setTitle("**Weekly Quota analysis**")
+            .setDescription(`Check below for good boys and bad boys.`)
+            .addField('Good Boys', 'Those who have a positive quota this week.')
+            .addFields(positivelist)
+            .addField('Bad Boys', 'Those who are terrible bankers and ended the week with a negative quota.')
+            .addFields(negativelist)
+            .setTimestamp()
+            .setColor("0074F7");
+
+        quotachannel.send(embed);
     }
     function scheduleReset(time, triggerThis) {
         const hour = Number(time.split(':')[0]);
@@ -594,28 +649,28 @@ client.on('message', msg => {
         }
     } else if (msg.channel.id == "669998643515883520"/*msg.channel.id == "693830200672387072"*/) {
         function timeSinceReset() {
-        var now = new Date();
-        var n = now.getDay();
-        var h = now.getHours();
-        var time = now.getTime();
-        if (n == 0) {
-            var dayStamp = 86400 * 6 * 1000
-        } else if (n > 1) {
-            var dayStamp = 86400 * (n - 1) * 1000
-        } else {
-            var dayStamp = 0
+            var now = new Date();
+            var n = now.getDay();
+            var h = now.getHours();
+            var time = now.getTime();
+            if (n == 0) {
+                var dayStamp = 86400 * 6 * 1000
+            } else if (n > 1) {
+                var dayStamp = 86400 * (n - 1) * 1000
+            } else {
+                var dayStamp = 0
+            }
+            if (h == 0) {
+                var hourStamp = -3600 * 2 * 1000
+            } else if (h > 2) {
+                var hourStamp = 3600 * (h - 2) * 1000
+            } else if (h == 1) {
+                var hourStamp = -3600 * h * 1000
+            }
+            var totalStamp = hourStamp + dayStamp
+            var finalStamp = time - totalStamp
+            return finalStamp
         }
-        if (h == 0) {
-            var hourStamp = -3600 * 2 * 1000
-        } else if (h > 2) {
-            var hourStamp = 3600 * (h - 2) * 1000
-        } else if (h == 1) {
-            var hourStamp = -3600 * h * 1000
-        }
-        var totalStamp = hourStamp + dayStamp
-        var finalStamp = time - totalStamp
-        return finalStamp
-    }
         if (msg.content.startsWith('**Worked** at the Bank and')) {
             var parts1 = msg.author.username.split("(")
             var loguser = parts1[0]
@@ -960,6 +1015,77 @@ client.on('message', msg => {
                 .setColor("0074F7");
 
             msg.channel.send(embed);
+        }
+    } else if (msg.content.startsWith(prefix + 'reset')) {
+        if (msg.member.roles.cache.some(role => role.name === obj.manager)) {
+            var jsonfile = fs.readFileSync(jsonname);
+            var obj = JSON.parse(jsonfile);
+            let quotachannel = client.channels.cache.get("778312068164091974");
+            var mainServer = client.guilds.get("657255154273484801");
+            var positivelist = []
+            var negativelist = []
+            for (var i = 0; i < obj.weekly.length; i++) {
+                if (obj.weekly[i].printed != '0') {
+                    var username = obj.weekly[i].username
+                    var userid = obj.weekly[i].userid
+                    var printed = parseInt(obj.weekly[i].printed)
+                    function findIndex() {
+                        for (var i = 0; i < obj.users.length; i++) {
+                            if (username == obj.users[i].username) {
+                                return i
+                            }
+                        }
+                    }
+                    var userIndex = findIndex()
+                    if (typeof userIndex == 'number') {
+                        if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
+                            var person = mainServer.members.cache.get(obj.users[userIndex].discordid)
+                            function findLimit() {
+                                for (var i = 0; i < obj.ranks.length; i++) {
+                                    if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                        return obj.ranks[i].quota;
+                                    }
+                                }
+                            }
+                            var needed = parseInt(findLimit())
+                        }
+                    }
+                    if (typeof needed != 'undefined') {
+                        var percent = printed / needed * 100
+                        if (printed >= needed) {
+                            var bonus = (printed - needed) * 0.01
+                        } else {
+                            var bonus = 0
+                        }
+                    }
+                    var toPush = { name: `${username}(${userid})`, value: `${printed}/${needed}$ (${percent}) Bonus:${bonus}$`, inline: true }
+                    if (printed > 0) {
+                        positivelist.push(toPush)
+                    } else {
+                        negativelist.push(toPush)
+                    }
+                }
+                obj.weekly[i].printed = "0"
+            }
+            console.log("Weekly reset initiated.")
+            fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                if (err) return console.log(err);
+                console.log(JSON.stringify(obj));
+                console.log('writing to ' + jsonname);
+            });
+            var embed = new Discord.MessageEmbed()
+                .setTitle("**Weekly Quota analysis**")
+                .setDescription(`Check below for good boys and bad boys.`)
+                .addField('Good Boys', 'Those who have a positive quota this week.')
+                .addFields(positivelist)
+                .addField('Bad Boys', 'Those who are terrible bankers and ended the week with a negative quota.')
+                .addFields(negativelist)
+                .setTimestamp()
+                .setColor("0074F7");
+
+            quotachannel.send(embed);
+        } else {
+            msg.reply('insufficient permissions.')
         }
     }
 });
