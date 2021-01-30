@@ -107,19 +107,19 @@
     {
       "username": "ArtyomZ01",
       "userid": "2223178964",
-      "printed": "69777",
-      "discordid": "undefined"
+      "printed": "164877",
+      "discordid": "713489772756074557"
     },
     {
       "username": "DW2D4Y",
       "userid": "1794087333",
-      "printed": "136200",
+      "printed": "222700",
       "discordid": "undefined"
     },
     {
       "username": "bumper2121222",
       "userid": "2248287916",
-      "printed": "94900",
+      "printed": "129800",
       "discordid": "undefined"
     },
     {
@@ -138,7 +138,7 @@
       "username": "lucaslepro22",
       "userid": "875853925",
       "printed": "3676525",
-      "discordid": "undefined"
+      "discordid": "603931187853000744"
     },
     {
       "username": "RobotBro60",
@@ -155,7 +155,7 @@
     {
       "username": "celian360",
       "userid": "569030963",
-      "printed": "60400",
+      "printed": "140900",
       "discordid": "undefined"
     },
     {
@@ -185,8 +185,8 @@
     {
       "username": "jyukk",
       "userid": "130221778",
-      "printed": "474740",
-      "discordid": "undefined"
+      "printed": "493740",
+      "discordid": "703548966201196544"
     },
     {
       "username": "fitrianda2010",
@@ -221,7 +221,7 @@
     {
       "username": "vonotige",
       "userid": "97196768",
-      "printed": "1658650",
+      "printed": "2066550",
       "discordid": "186432451915153408"
     },
     {
@@ -318,7 +318,7 @@
       "username": "Baggin01",
       "userid": "106703412",
       "printed": "2413500",
-      "discordid": "undefined"
+      "discordid": "595965922091728906"
     },
     {
       "username": "VenmanBrothernow",
@@ -395,7 +395,7 @@
     {
       "username": "csokicsen007",
       "userid": "377087339",
-      "printed": "157100",
+      "printed": "161900",
       "discordid": "undefined"
     },
     {
@@ -425,7 +425,7 @@
       "username": "roborovski_hamster1",
       "userid": "1064419223",
       "printed": "4646267",
-      "discordid": "undefined"
+      "discordid": "611839634648989726"
     },
     {
       "username": "B_DYi",
@@ -1549,102 +1549,112 @@
     {
       "username": "ArtyomZ01",
       "userid": "2223178964",
-      "printed": "69777"
+      "printed": "27400"
     },
     {
       "username": "DW2D4Y",
       "userid": "1794087333",
-      "printed": "36800"
+      "printed": "0"
     },
     {
       "username": "bumper2121222",
       "userid": "2248287916",
-      "printed": "94900"
+      "printed": "0"
     },
     {
       "username": "jerrydjdj",
       "userid": "589856223",
-      "printed": "7505"
+      "printed": "0"
     },
     {
       "username": "amj04",
       "userid": "66134114",
-      "printed": "72300"
+      "printed": "0"
     },
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "194800"
+      "printed": "0"
     },
     {
       "username": "RobotBro60",
       "userid": "61497552",
-      "printed": "26300"
+      "printed": "0"
     },
     {
       "username": "yasserxx505",
       "userid": "122774108",
-      "printed": "128200"
+      "printed": "0"
     },
     {
       "username": "celian360",
       "userid": "569030963",
-      "printed": "60400"
+      "printed": "0"
     },
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "27600"
+      "printed": "0"
     },
     {
       "username": "7kHxll",
       "userid": "1268587292",
-      "printed": "151007"
+      "printed": "0"
     },
     {
       "username": "KronosSilvius",
       "userid": "556574078",
-      "printed": "147386"
+      "printed": "0"
     },
     {
       "username": "miles7282",
       "userid": "677936166",
-      "printed": "178900"
+      "printed": "0"
     },
     {
       "username": "jyukk",
       "userid": "130221778",
-      "printed": "410700"
+      "printed": "0"
     },
     {
       "username": "fitrianda2010",
       "userid": "1160166135",
-      "printed": "21900"
+      "printed": "0"
     },
     {
       "username": "HarvkenSpan",
       "userid": "554803938",
-      "printed": "16700"
+      "printed": "0"
     },
     {
       "username": "bangbongpingpong",
       "userid": "1369235439",
-      "printed": "540"
+      "printed": "0"
     },
     {
       "username": "jssjdPL",
       "userid": "437384252",
-      "printed": "44100"
+      "printed": "0"
     },
     {
       "username": "matteiutz1",
       "userid": "160757927",
-      "printed": "26000"
+      "printed": "0"
     },
     {
       "username": "Robiloxnoob",
       "userid": "1766645736",
-      "printed": "33500"
+      "printed": "0"
+    },
+    {
+      "username": "vonotige",
+      "userid": "97196768",
+      "printed": "0"
+    },
+    {
+      "username": "csokicsen007",
+      "userid": "377087339",
+      "printed": "0"
     }
   ],
   "ranks": [
@@ -1670,6 +1680,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "804707916061474836"
+    "messageid": "804844253367763006"
   }
 }
