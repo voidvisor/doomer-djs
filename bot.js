@@ -1031,7 +1031,7 @@ client.on('message', msg => {
                     var printed = parseInt(obj.weekly[i].printed)
                     function findIndex() {
                         for (var i = 0; i < obj.users.length; i++) {
-                            if (username == obj.users[i].username) {
+                            if (userid == obj.users[i].userid) {
                                 return i
                             }
                         }
@@ -1040,30 +1040,34 @@ client.on('message', msg => {
                     if (typeof userIndex == 'number') {
                         if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
                             var person = mainServer.members.cache.get(obj.users[userIndex].discordid)
-                            function findLimit() {
-                                for (var i = 0; i < obj.ranks.length; i++) {
-                                    if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                        return obj.ranks[i].quota;
+                            person.then(function (person) {
+                                function findLimit() {
+                                    for (var i = 0; i < obj.ranks.length; i++) {
+                                        if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                            return obj.ranks[i].quota;
+                                        }
                                     }
                                 }
+                                var needed = parseInt(findLimit())
+                            })
+                        }
+                    }
+                    needed.then(function (needed) {
+                        if (typeof needed != 'undefined') {
+                            var percent = printed / needed * 100
+                            if (printed >= needed) {
+                                var bonus = (printed - needed) * 0.01
+                            } else {
+                                var bonus = 0
                             }
-                            var needed = parseInt(findLimit())
                         }
-                    }
-                    if (typeof needed != 'undefined') {
-                        var percent = printed / needed * 100
-                        if (printed >= needed) {
-                            var bonus = (printed - needed) * 0.01
+                        var toPush = { name: `${username}(${userid})`, value: `${printed}/${needed}$ (${percent}) Bonus:${bonus}$`, inline: true }
+                        if (printed > 0) {
+                            positivelist.push(toPush)
                         } else {
-                            var bonus = 0
+                            negativelist.push(toPush)
                         }
-                    }
-                    var toPush = { name: `${username}(${userid})`, value: `${printed}/${needed}$ (${percent}) Bonus:${bonus}$`, inline: true }
-                    if (printed > 0) {
-                        positivelist.push(toPush)
-                    } else {
-                        negativelist.push(toPush)
-                    }
+                    })
                 }
                 obj.weekly[i].printed = "0"
             }
