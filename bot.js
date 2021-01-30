@@ -1039,17 +1039,26 @@ client.on('message', msg => {
                     var userIndex = findIndex()
                     if (typeof userIndex == 'number') {
                         if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                            var person = mainServer.members.cache.get(obj.users[userIndex].discordid)
-                            person.then(function (person) {
-                                function findLimit() {
+                            async function personGetter() {
+                                var person = await mainServer.members.cache.get(obj.users[userIndex].discordid)
+                                return person
+                            }
+                            var person = personGetter()
+                            function findLimit() {
+                                person.then(function (person) {
                                     for (var i = 0; i < obj.ranks.length; i++) {
                                         if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
                                             return obj.ranks[i].quota;
                                         }
                                     }
-                                }
-                                var needed = parseInt(findLimit())
-                            })
+                                })
+                                return person
+                            }
+                            async function neededGetter() {
+                                var needed = await parseInt(findLimit())
+                                return needed
+                            }
+                            var needed = neededGetter()
                         }
                     }
                     needed.then(function (needed) {
