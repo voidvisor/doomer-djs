@@ -1040,9 +1040,6 @@ client.on('message', msg => {
                     if (typeof userIndex == 'number') {
                         if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
                             var person = mainServer.members.cache.get(obj.users[userIndex].discordid)
-                            console.log(obj.users[userIndex].discordid)
-                            console.log(person)
-                            console.log(mainServer)
                             function findLimit() {
                                 for (var i = 0; i < obj.ranks.length; i++) {
                                     if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
