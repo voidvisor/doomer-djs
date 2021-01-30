@@ -137,7 +137,7 @@
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "3687725",
+      "printed": "3698925",
       "discordid": "603931187853000744"
     },
     {
@@ -161,7 +161,7 @@
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "2676400",
+      "printed": "2695100",
       "discordid": "689016954077708328"
     },
     {
@@ -197,8 +197,8 @@
     {
       "username": "HarvkenSpan",
       "userid": "554803938",
-      "printed": "844069",
-      "discordid": "undefined"
+      "printed": "843444",
+      "discordid": "712723337373155348"
     },
     {
       "username": "bangbongpingpong",
@@ -424,7 +424,7 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "5042067",
+      "printed": "5445767",
       "discordid": "611839634648989726"
     },
     {
@@ -1547,7 +1547,8 @@
     {
       "username": "F3ILED",
       "userid": "1151176101",
-      "printed": "21300"
+      "printed": "42600",
+      "discordid": "undefined"
     }
   ],
   "weekly": [
@@ -1579,7 +1580,7 @@
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "11200"
+      "printed": "22400"
     },
     {
       "username": "RobotBro60",
@@ -1599,7 +1600,7 @@
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "18700"
+      "printed": "37400"
     },
     {
       "username": "7kHxll",
@@ -1629,7 +1630,7 @@
     {
       "username": "HarvkenSpan",
       "userid": "554803938",
-      "printed": "-625"
+      "printed": "-1250"
     },
     {
       "username": "bangbongpingpong",
@@ -1664,12 +1665,12 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "395800"
+      "printed": "799500"
     },
     {
       "username": "F3ILED",
       "userid": "1151176101",
-      "printed": "21300"
+      "printed": "42600"
     }
   ],
   "ranks": [
@@ -1695,6 +1696,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "804937953649491978"
+    "messageid": "805139591152533564"
   }
 }
