@@ -27,15 +27,18 @@ client.on('ready', () => {
         var now = new Date();
         var n = now.getDay();
         console.log(`Bot currently on ${n} day.`)
-        if (n != 1) {
+        if (n == 0) {
             startTime.setHours(startTime.getHours() + 24);
+        } else if (n > 1) {
+            var timeHours = 8 - n
+            startTime.setHours(startTime.getHours() + timeHours);
         } else if (startTime.getTime() < now.getTime()) {
             startTime.setHours(startTime.getHours() + 24);
         }
         const firstTriggerAfterMs = startTime.getTime() - now.getTime();
         setTimeout(function () {
             triggerThis();
-            setInterval(triggerThis, 24 * 60 * 60 * 1000);
+            setInterval(triggerThis, 7 * 24 * 60 * 60 * 1000);
         }, firstTriggerAfterMs);
     }
     scheduleReset("02:00", resetWeekly)
