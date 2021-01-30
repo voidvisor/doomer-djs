@@ -30,7 +30,7 @@ client.on('ready', () => {
         if (n == 0) {
             startTime.setHours(startTime.getHours() + 24);
         } else if (n > 1) {
-            var timeHours = 8 - n
+            var timeHours = (8 - n) * 24
             startTime.setHours(startTime.getHours() + timeHours);
         } else if (startTime.getTime() < now.getTime()) {
             startTime.setHours(startTime.getHours() + 24);

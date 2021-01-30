@@ -107,7 +107,7 @@
     {
       "username": "ArtyomZ01",
       "userid": "2223178964",
-      "printed": "164877",
+      "printed": "192277",
       "discordid": "713489772756074557"
     },
     {
@@ -137,7 +137,7 @@
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "3676525",
+      "printed": "3687725",
       "discordid": "603931187853000744"
     },
     {
@@ -161,8 +161,8 @@
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "2657700",
-      "discordid": "undefined"
+      "printed": "2676400",
+      "discordid": "689016954077708328"
     },
     {
       "username": "7kHxll",
@@ -197,7 +197,7 @@
     {
       "username": "HarvkenSpan",
       "userid": "554803938",
-      "printed": "844694",
+      "printed": "844069",
       "discordid": "undefined"
     },
     {
@@ -424,7 +424,7 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "4646267",
+      "printed": "5042067",
       "discordid": "611839634648989726"
     },
     {
@@ -1543,6 +1543,11 @@
       "username": "widfs",
       "userid": "71807647",
       "printed": "9700"
+    },
+    {
+      "username": "F3ILED",
+      "userid": "1151176101",
+      "printed": "21300"
     }
   ],
   "weekly": [
@@ -1574,7 +1579,7 @@
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "0"
+      "printed": "11200"
     },
     {
       "username": "RobotBro60",
@@ -1594,7 +1599,7 @@
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "0"
+      "printed": "18700"
     },
     {
       "username": "7kHxll",
@@ -1624,7 +1629,7 @@
     {
       "username": "HarvkenSpan",
       "userid": "554803938",
-      "printed": "0"
+      "printed": "-625"
     },
     {
       "username": "bangbongpingpong",
@@ -1655,6 +1660,16 @@
       "username": "csokicsen007",
       "userid": "377087339",
       "printed": "0"
+    },
+    {
+      "username": "roborovski_hamster1",
+      "userid": "1064419223",
+      "printed": "395800"
+    },
+    {
+      "username": "F3ILED",
+      "userid": "1151176101",
+      "printed": "21300"
     }
   ],
   "ranks": [
@@ -1680,6 +1695,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "804844253367763006"
+    "messageid": "804937953649491978"
   }
 }
