@@ -14,48 +14,54 @@ client.on('ready', () => {
         var mainServer = client.guilds.cache.get("657255154273484801");
         var positivelist = []
         var negativelist = []
-        for (var i = 0; i < obj.weekly.length; i++) {
-            if (obj.weekly[i].printed != '0') {
-                var username = obj.weekly[i].username
-                var userid = obj.weekly[i].userid
-                var printed = parseInt(obj.weekly[i].printed)
-                function findIndex() {
-                    for (var i = 0; i < obj.users.length; i++) {
-                        if (username == obj.users[i].username) {
-                            return i
-                        }
-                    }
-                }
-                var userIndex = findIndex()
-                if (typeof userIndex == 'number') {
-                    if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                        var person = mainServer.members.cache.get(obj.users[userIndex].discordid)
-                        function findLimit() {
-                            for (var i = 0; i < obj.ranks.length; i++) {
-                                if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                    return obj.ranks[i].quota;
-                                }
+        async function analyzer() {
+            for (var i = 0; i < obj.weekly.length; i++) {
+                if (obj.weekly[i].printed != '0') {
+                    var username = obj.weekly[i].username
+                    var userid = obj.weekly[i].userid
+                    var printed = parseInt(obj.weekly[i].printed)
+                    function findIndex() {
+                        for (var i = 0; i < obj.users.length; i++) {
+                            if (userid == obj.users[i].userid) {
+                                return i
                             }
                         }
-                        var needed = parseInt(findLimit())
                     }
-                }
-                if (typeof needed != 'undefined') {
-                    var percent = printed / needed * 100
-                    if (printed >= needed) {
-                        var bonus = (printed - needed) * 0.01
+                    var userIndex = findIndex()
+                    if (typeof userIndex == 'number') {
+                        if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
+                            var person = await mainServer.members.fetch(obj.users[userIndex].discordid)
+                            function findLimit() {
+                                for (var i = 0; i < obj.ranks.length; i++) {
+                                    if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                        return obj.ranks[i].quota;
+                                    }
+                                }
+                            }
+                            var needed = parseInt(findLimit())
+                        }
+                    }
+                    if (typeof needed != 'undefined') {
+                        var percent = printed / needed * 100
+                        if (printed >= needed) {
+                            var bonus = (printed - needed) * 0.01
+                        } else {
+                            var bonus = 0
+                        }
+                    }
+                    var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
+                    if (printed > 0) {
+                        positivelist.push(toPush)
                     } else {
-                        var bonus = 0
+                        negativelist.push(toPush)
                     }
                 }
-                var toPush = { name: `${username}(${userid})`, value: `${printed}/${needed}$ (${percent}) Bonus:${bonus}$`, inline: true }
-                if (printed > 0) {
-                    positivelist.push(toPush)
-                } else {
-                    negativelist.push(toPush)
-                }
+                obj.weekly[i].printed = "0"
             }
-            obj.weekly[i].printed = "0"
+            return {
+                positive: positivelist.join(''),
+                negative: negativelist.join('')
+            }
         }
         console.log("Weekly reset initiated.")
         fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
@@ -63,17 +69,10 @@ client.on('ready', () => {
             console.log(JSON.stringify(obj));
             console.log('writing to ' + jsonname);
         });
-        var embed = new Discord.MessageEmbed()
-            .setTitle("**Weekly Quota analysis**")
-            .setDescription(`Check below for good boys and bad boys.`)
-            .addField('Good Boys', 'Those who have a positive quota this week.')
-            .addFields(positivelist)
-            .addField('Bad Boys', 'Those who are terrible bankers and ended the week with a negative quota.')
-            .addFields(negativelist)
-            .setTimestamp()
-            .setColor("0074F7");
-
-        quotachannel.send(embed);
+        var analyze = analyzer()
+        analyze.then(function (result) {
+            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have a positive quota this week.\n${result.positive}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${result.negative}`);
+        })
     }
     function scheduleReset(time, triggerThis) {
         const hour = Number(time.split(':')[0]);
@@ -1015,76 +1014,6 @@ client.on('message', msg => {
                 .setColor("0074F7");
 
             msg.channel.send(embed);
-        }
-    } else if (msg.content.startsWith(prefix + 'reset')) {
-        if (msg.member.roles.cache.some(role => role.name === obj.manager)) {
-            var jsonfile = fs.readFileSync(jsonname);
-            var obj = JSON.parse(jsonfile);
-            let quotachannel = client.channels.cache.get("778312068164091974");
-            var mainServer = client.guilds.cache.get("657255154273484801");
-            var positivelist = []
-            var negativelist = []
-            async function analyzer() {
-                for (var i = 0; i < obj.weekly.length; i++) {
-                    if (obj.weekly[i].printed != '0') {
-                        var username = obj.weekly[i].username
-                        var userid = obj.weekly[i].userid
-                        var printed = parseInt(obj.weekly[i].printed)
-                        function findIndex() {
-                            for (var i = 0; i < obj.users.length; i++) {
-                                if (userid == obj.users[i].userid) {
-                                    return i
-                                }
-                            }
-                        }
-                        var userIndex = findIndex()
-                        if (typeof userIndex == 'number') {
-                            if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                                var person = await mainServer.members.fetch(obj.users[userIndex].discordid)
-                                function findLimit() {
-                                    for (var i = 0; i < obj.ranks.length; i++) {
-                                        if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                            return obj.ranks[i].quota;
-                                        }
-                                    }
-                                }
-                                var needed = parseInt(findLimit())
-                            }
-                        }
-                        if (typeof needed != 'undefined') {
-                            var percent = printed / needed * 100
-                            if (printed >= needed) {
-                                var bonus = (printed - needed) * 0.01
-                            } else {
-                                var bonus = 0
-                            }
-                        }
-                        var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
-                        if (printed > 0) {
-                            positivelist.push(toPush)
-                        } else {
-                            negativelist.push(toPush)
-                        }
-                    }
-                    obj.weekly[i].printed = "0"
-                }
-                return {
-                    positive: positivelist.join(''),
-                    negative: negativelist.join('')
-                }
-            }
-            console.log("Weekly reset initiated.")
-            fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
-                if (err) return console.log(err);
-                console.log(JSON.stringify(obj));
-                console.log('writing to ' + jsonname);
-            });
-            var analyze = analyzer()
-            analyze.then(function (result) {
-                quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have a positive quota this week.\n${result.positive}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${result.negative}`);
-            })
-        } else {
-            msg.reply('insufficient permissions.')
         }
     }
 });
