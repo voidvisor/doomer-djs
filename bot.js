@@ -1059,7 +1059,7 @@ client.on('message', msg => {
                                 var bonus = 0
                             }
                         }
-                        var toPush = `\n${username}(${userid})\n${printed}/${needed}$ (${percent})\nBonus:${bonus}$`
+                        var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
                         if (printed > 0) {
                             positivelist.push(toPush)
                         } else {
@@ -1069,8 +1069,8 @@ client.on('message', msg => {
                     obj.weekly[i].printed = "0"
                 }
                 return {
-                    positive: positivelist.toString(),
-                    negative: negativelist.toString()
+                    positive: positivelist.join(''),
+                    negative: negativelist.join('')
                 }
             }
             console.log("Weekly reset initiated.")
