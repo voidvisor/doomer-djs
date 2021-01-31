@@ -45,7 +45,7 @@ client.on('ready', () => {
                     }
                     if (typeof needed != 'undefined') {
                         var percent = printed / needed * 100
-                        if (printed >= needed) {
+                        if (number < quota && quota != 0) {
                             var bonus = (printed - needed) * 0.01
                         } else {
                             var bonus = 0
