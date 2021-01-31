@@ -1068,15 +1068,19 @@ client.on('message', msg => {
                     }
                     obj.weekly[i].printed = "0"
                 }
+                return {
+                    positive: positivelist,
+                    negative: negativelist
+                }
             }
-            analyzer()
             console.log("Weekly reset initiated.")
             fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                 if (err) return console.log(err);
                 console.log(JSON.stringify(obj));
                 console.log('writing to ' + jsonname);
             });
-            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have a positive quota this week.\n${positivelist.toString()}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${negativelist.toString()}`);
+            var analyze = analyzer()
+            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have a positive quota this week.\n${analyze.positive.toString()}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${analyze.negative.toString()}`);
         } else {
             msg.reply('insufficient permissions.')
         }
