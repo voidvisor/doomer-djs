@@ -453,49 +453,51 @@ client.on('message', msg => {
             var userIndex = findIndex()
             if (typeof userIndex == 'number') {
                 if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                    var person = msg.guild.members.cache.get(obj.users[userIndex].discordid)
-                    function findLimit() {
-                        for (var i = 0; i < obj.ranks.length; i++) {
-                            if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                return obj.ranks[i].quota;
+                    var person = msg.guild.members.fetch(obj.users[userIndex].discordid)
+                    person.then(function (person) {
+                        function findLimit() {
+                            for (var i = 0; i < obj.ranks.length; i++) {
+                                if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                    return obj.ranks[i].quota;
+                                }
                             }
                         }
-                    }
-                    var quota = parseInt(findLimit())
-                    function findPrinted() {
-                        for (var i = 0; i < obj.weekly.length; i++) {
-                            if (obj.weekly[i].username == user) {
-                                return obj.weekly[i].printed;
+                        var quota = parseInt(findLimit())
+                        function findPrinted() {
+                            for (var i = 0; i < obj.weekly.length; i++) {
+                                if (obj.weekly[i].username == user) {
+                                    return obj.weekly[i].printed;
+                                }
                             }
                         }
-                    }
-                    var numbah = findPrinted()
-                    if (typeof numbah == 'string' && numbah != "0") {
-                        var number = parseInt(numbah)
-                        var percent = number / quota * 100
-                        if (number < quota) {
-                            var bonus = 0
+                        var numbah = findPrinted()
+                        if (typeof numbah == 'string' && numbah != "0") {
+                            var number = parseInt(numbah)
+                            var percent = number / quota * 100
+                            if (number < quota) {
+                                var bonus = 0
+                            } else {
+                                var bonus = (number - quota) * 0.01
+                            }
+                            var embed = new Discord.MessageEmbed()
+                                .setTitle('**Weekly Quota**')
+                                .setDescription(`${number}/${quota}$`)
+                                .addField('\u200B', `${percent}%`)
+                                .addField('\u200B', `Bonus: ${bonus}$`)
+                                .setTimestamp()
+                                .setColor("0074F7");
+
+                            msg.channel.send(embed);
                         } else {
-                            var bonus = (number - quota) * 0.01
+                            var embed = new Discord.MessageEmbed()
+                                .setTitle('**Weekly Quota**')
+                                .setDescription(`No data this week.`)
+                                .setTimestamp()
+                                .setColor("0074F7");
+
+                            msg.channel.send(embed);
                         }
-                        var embed = new Discord.MessageEmbed()
-                            .setTitle('**Weekly Quota**')
-                            .setDescription(`${number}/${quota}$`)
-                            .addField('\u200B', `${percent}%`)
-                            .addField('\u200B', `Bonus: ${bonus}$`)
-                            .setTimestamp()
-                            .setColor("0074F7");
-
-                        msg.channel.send(embed);
-                    } else {
-                        var embed = new Discord.MessageEmbed()
-                            .setTitle('**Weekly Quota**')
-                            .setDescription(`No data this week.`)
-                            .setTimestamp()
-                            .setColor("0074F7");
-
-                        msg.channel.send(embed);
-                    }
+                    })
                 } else {
                     var embed = new Discord.MessageEmbed()
                         .setTitle('**Weekly Quota**')
