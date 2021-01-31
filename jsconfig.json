@@ -239,7 +239,7 @@
     {
       "username": "Profituber",
       "userid": "183633358",
-      "printed": "886800",
+      "printed": "906900",
       "discordid": "undefined"
     },
     {
@@ -1553,12 +1553,14 @@
     {
       "username": "jrjjmaster3211",
       "userid": "70680479",
-      "printed": "27600"
+      "printed": "189200",
+      "discordid": "undefined"
     },
     {
       "username": "James_Odd1sOut",
       "userid": "457834816",
-      "printed": "54100"
+      "printed": "108200",
+      "discordid": "undefined"
     }
   ],
   "weekly": [
@@ -1685,15 +1687,36 @@
     {
       "username": "jrjjmaster3211",
       "userid": "70680479",
-      "printed": "27600"
+      "printed": "189200"
     },
     {
       "username": "James_Odd1sOut",
       "userid": "457834816",
-      "printed": "54100"
+      "printed": "108200"
+    },
+    {
+      "username": "Profituber",
+      "userid": "183633358",
+      "printed": "20100"
     }
   ],
   "ranks": [
+    {
+      "rank": "Department Head",
+      "quota": "0"
+    },
+    {
+      "rank": "Department Manager",
+      "quota": "0"
+    },
+    {
+      "rank": "Staff Department",
+      "quota": "0"
+    },
+    {
+      "rank": "Economy Department",
+      "quota": "0"
+    },
     {
       "rank": "Senior Banker",
       "quota": "1200000"
@@ -1716,6 +1739,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "805396823543513169"
+    "messageid": "805406137855770644"
   }
 }
