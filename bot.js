@@ -1059,7 +1059,7 @@ client.on('message', msg => {
                                 var bonus = 0
                             }
                         }
-                        var toPush = { name: `${username}(${userid})`, value: `${printed}/${needed}$ (${percent}) Bonus:${bonus}$`, inline: true }
+                        var toPush = `\n${username}(${userid})\n${printed}/${needed}$ (${percent})\nBonus:${bonus}$`
                         if (printed > 0) {
                             positivelist.push(toPush)
                         } else {
@@ -1076,17 +1076,7 @@ client.on('message', msg => {
                 console.log(JSON.stringify(obj));
                 console.log('writing to ' + jsonname);
             });
-            var embed = new Discord.MessageEmbed()
-                .setTitle("**Weekly Quota analysis**")
-                .setDescription(`Check below for good boys and bad boys.`)
-                .addField('Good Boys', 'Those who have a positive quota this week.')
-                .addFields(positivelist)
-                .addField('Bad Boys', 'Those who are terrible bankers and ended the week with a negative quota.')
-                .addFields(negativelist)
-                .setTimestamp()
-                .setColor("0074F7");
-
-            quotachannel.send(embed);
+            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have a positive quota this week.\n${positivelist.toString()}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${negativelist.toString()}`);
         } else {
             msg.reply('insufficient permissions.')
         }
