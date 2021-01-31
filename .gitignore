@@ -6,3 +6,7 @@ node_modules
 Doomer.njsproj
 Doomer.njsproj.user
 Doomer.sln
+bin/Microsoft.NodejsTools.WebRole.dll
+obj/Debug/Doomer.njsproj.CoreCompileInputs.cache
+obj/Debug/Doomer.njsproj.FileListAbsolute.txt
+obj/Debug/Doomer.njsprojAssemblyReference.cache
