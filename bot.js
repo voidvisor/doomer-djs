@@ -474,7 +474,7 @@ client.on('message', msg => {
                         if (typeof numbah == 'string' && numbah != "0") {
                             var number = parseInt(numbah)
                             var percent = number / quota * 100
-                            if (number < quota) {
+                            if (number < quota && quota != 0) {
                                 var bonus = 0
                             } else {
                                 var bonus = (number - quota) * 0.01
