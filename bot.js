@@ -14,6 +14,8 @@ client.on('ready', () => {
         var mainServer = client.guilds.cache.get("657255154273484801");
         var positivelist = []
         var negativelist = []
+        var neutrallist = []
+        var nolist = []
         async function analyzer() {
             for (var i = 0; i < obj.weekly.length; i++) {
                 if (obj.weekly[i].printed != '0') {
@@ -50,8 +52,12 @@ client.on('ready', () => {
                         }
                     }
                     var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
-                    if (printed > 0) {
+                    if (needed == 0) {
+                        nolist.push(toPush)
+                    } else if (percent >= 100) {
                         positivelist.push(toPush)
+                    } else if (printed > 0) {
+                        neutrallist.push(toPush)
                     } else {
                         negativelist.push(toPush)
                     }
@@ -60,7 +66,9 @@ client.on('ready', () => {
             }
             return {
                 positive: positivelist.join(''),
-                negative: negativelist.join('')
+                neutral: neutrallist.join(''),
+                negative: negativelist.join(''),
+                noquota: nolist.join('')
             }
         }
         console.log("Weekly reset initiated.")
@@ -71,7 +79,7 @@ client.on('ready', () => {
         });
         var analyze = analyzer()
         analyze.then(function (result) {
-            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have a positive quota this week.\n${result.positive}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${result.negative}`);
+            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have completed their quota this week.\n${result.positive}\n**Meh Boys** Those who haven't completed their quota this week.\n${result.neutral}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${result.negative}\n**No Quota** People who are exempt from the weekly quota.\n${result.noquota}`);
         })
     }
     function scheduleReset(time, triggerThis) {
