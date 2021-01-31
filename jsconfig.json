@@ -137,7 +137,7 @@
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "3790125",
+      "printed": "3806325",
       "discordid": "603931187853000744"
     },
     {
@@ -161,7 +161,7 @@
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "2695100",
+      "printed": "2711100",
       "discordid": "689016954077708328"
     },
     {
@@ -424,7 +424,7 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "5453667",
+      "printed": "5469967",
       "discordid": "611839634648989726"
     },
     {
@@ -1549,6 +1549,16 @@
       "userid": "1151176101",
       "printed": "42600",
       "discordid": "undefined"
+    },
+    {
+      "username": "jrjjmaster3211",
+      "userid": "70680479",
+      "printed": "27600"
+    },
+    {
+      "username": "James_Odd1sOut",
+      "userid": "457834816",
+      "printed": "54100"
     }
   ],
   "weekly": [
@@ -1580,7 +1590,7 @@
     {
       "username": "lucaslepro22",
       "userid": "875853925",
-      "printed": "113600"
+      "printed": "129800"
     },
     {
       "username": "RobotBro60",
@@ -1600,7 +1610,7 @@
     {
       "username": "HErik2007",
       "userid": "250578204",
-      "printed": "37400"
+      "printed": "53400"
     },
     {
       "username": "7kHxll",
@@ -1665,12 +1675,22 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "807400"
+      "printed": "823700"
     },
     {
       "username": "F3ILED",
       "userid": "1151176101",
       "printed": "42600"
+    },
+    {
+      "username": "jrjjmaster3211",
+      "userid": "70680479",
+      "printed": "27600"
+    },
+    {
+      "username": "James_Odd1sOut",
+      "userid": "457834816",
+      "printed": "54100"
     }
   ],
   "ranks": [
@@ -1696,6 +1716,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "805396147048677397"
+    "messageid": "805396823543513169"
   }
 }
