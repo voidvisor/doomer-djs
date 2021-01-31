@@ -45,7 +45,7 @@ client.on('ready', () => {
                     }
                     if (typeof needed != 'undefined') {
                         var percent = printed / needed * 100
-                        if (number < quota && quota != 0) {
+                        if (printed < needed || needed == 0) {
                             var bonus = (printed - needed) * 0.01
                         } else {
                             var bonus = 0
@@ -474,7 +474,7 @@ client.on('message', msg => {
                         if (typeof numbah == 'string' && numbah != "0") {
                             var number = parseInt(numbah)
                             var percent = number / quota * 100
-                            if (number < quota && quota != 0) {
+                            if (number < quota || quota == 0) {
                                 var bonus = 0
                             } else {
                                 var bonus = (number - quota) * 0.01
