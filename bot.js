@@ -46,9 +46,9 @@ client.on('ready', () => {
                     if (typeof needed != 'undefined') {
                         var percent = printed / needed * 100
                         if (printed < needed || needed == 0) {
-                            var bonus = (printed - needed) * 0.01
-                        } else {
                             var bonus = 0
+                        } else {
+                            var bonus = (printed - needed) * 0.01
                         }
                     }
                     var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
@@ -64,6 +64,11 @@ client.on('ready', () => {
                 }
                 obj.weekly[i].printed = "0"
             }
+            fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+                if (err) return console.log(err);
+                console.log(JSON.stringify(obj));
+                console.log('writing to ' + jsonname);
+            });
             return {
                 positive: positivelist.join(''),
                 neutral: neutrallist.join(''),
