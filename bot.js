@@ -41,6 +41,8 @@ client.on('ready', () => {
                                 }
                             }
                             var needed = parseInt(findLimit())
+                        } else {
+                            var needed = parseInt("NaN")
                         }
                     }
                     if (typeof needed != 'undefined') {
