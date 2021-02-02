@@ -185,7 +185,7 @@
     {
       "username": "jyukk",
       "userid": "130221778",
-      "printed": "493740",
+      "printed": "675040",
       "discordid": "703548966201196544"
     },
     {
@@ -424,7 +424,7 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "5510867",
+      "printed": "5524367",
       "discordid": "611839634648989726"
     },
     {
@@ -1553,14 +1553,20 @@
     {
       "username": "jrjjmaster3211",
       "userid": "70680479",
-      "printed": "510100",
+      "printed": "635100",
       "discordid": "366260383679512576"
     },
     {
       "username": "James_Odd1sOut",
       "userid": "457834816",
-      "printed": "350800",
+      "printed": "402700",
       "discordid": "336409678370177025"
+    },
+    {
+      "username": "Monsterus_S",
+      "userid": "1243035312",
+      "printed": "331300",
+      "discordid": "undefined"
     }
   ],
   "weekly": [
@@ -1632,7 +1638,7 @@
     {
       "username": "jyukk",
       "userid": "130221778",
-      "printed": "0"
+      "printed": "181300"
     },
     {
       "username": "fitrianda2010",
@@ -1677,7 +1683,7 @@
     {
       "username": "roborovski_hamster1",
       "userid": "1064419223",
-      "printed": "0"
+      "printed": "13500"
     },
     {
       "username": "F3ILED",
@@ -1687,12 +1693,12 @@
     {
       "username": "jrjjmaster3211",
       "userid": "70680479",
-      "printed": "145000"
+      "printed": "270000"
     },
     {
       "username": "James_Odd1sOut",
       "userid": "457834816",
-      "printed": "17600"
+      "printed": "69500"
     },
     {
       "username": "Profituber",
@@ -1713,6 +1719,11 @@
       "username": "Teverlox",
       "userid": "1977602908",
       "printed": "0"
+    },
+    {
+      "username": "Monsterus_S",
+      "userid": "1243035312",
+      "printed": "331300"
     }
   ],
   "ranks": [
@@ -1754,6 +1765,6 @@
     }
   ],
   "lastdata": {
-    "messageid": "805897461839036439"
+    "messageid": "806146270636802068"
   }
 }
