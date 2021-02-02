@@ -100,7 +100,7 @@ client.on('ready', () => {
             var timeHours = (8 - n) * 24
             startTime.setHours(startTime.getHours() + timeHours);
         } else if (startTime.getTime() < now.getTime()) {
-            startTime.setHours(startTime.getHours() + 24);
+            startTime.setHours(startTime.getHours() + (7 * 24));
         }
         const firstTriggerAfterMs = startTime.getTime() - now.getTime();
         setTimeout(function () {
@@ -743,6 +743,9 @@ client.on('message', msg => {
                     var myobj2 = JSON.parse(myjson2)
                     obj.weekly[userindex2] = myobj2;
                 }
+                var lastjson = `{"messageid":"${msg.id}"}`
+                var lastobj = JSON.parse(lastjson)
+                obj.lastdata = lastobj
                 fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj));
@@ -769,6 +772,9 @@ client.on('message', msg => {
                     var myobj2 = JSON.parse(myjson2)
                     obj.weekly[obj.weekly.length] = myobj2;
                 }
+                var lastjson = `{"messageid":"${msg.id}"}`
+                var lastobj = JSON.parse(lastjson)
+                obj.lastdata = lastobj
                 fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj));
@@ -786,6 +792,9 @@ client.on('message', msg => {
                     var myobj2 = JSON.parse(myjson2)
                     obj.weekly[obj.weekly.length] = myobj2;
                 }
+                var lastjson = `{"messageid":"${msg.id}"}`
+                var lastobj = JSON.parse(lastjson)
+                obj.lastdata = lastobj
                 fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj));
@@ -844,6 +853,9 @@ client.on('message', msg => {
                     var myobj2 = JSON.parse(myjson2)
                     obj.weekly[userindex2] = myobj2;
                 }
+                var lastjson = `{"messageid":"${msg.id}"}`
+                var lastobj = JSON.parse(lastjson)
+                obj.lastdata = lastobj
                 fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj));
@@ -871,6 +883,9 @@ client.on('message', msg => {
                     var myobj2 = JSON.parse(myjson2)
                     obj.weekly[obj.weekly.length] = myobj2;
                 }
+                var lastjson = `{"messageid":"${msg.id}"}`
+                var lastobj = JSON.parse(lastjson)
+                obj.lastdata = lastobj
                 fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj));
@@ -888,6 +903,9 @@ client.on('message', msg => {
                     var myobj2 = JSON.parse(myjson2)
                     obj.weekly[obj.weekly.length] = myobj2;
                 }
+                var lastjson = `{"messageid":"${msg.id}"}`
+                var lastobj = JSON.parse(lastjson)
+                obj.lastdata = lastobj
                 fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                     if (err) return console.log(err);
                     //console.log(JSON.stringify(obj));
