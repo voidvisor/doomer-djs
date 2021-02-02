@@ -18,41 +18,43 @@ client.on('ready', () => {
         var nolist = []
         async function analyzer() {
             for (var i = 0; i < obj.weekly.length; i++) {
-                if (obj.weekly[i].printed != '0') {
-                    var username = obj.weekly[i].username
-                    var userid = obj.weekly[i].userid
-                    var printed = parseInt(obj.weekly[i].printed)
-                    function findIndex() {
-                        for (var i = 0; i < obj.users.length; i++) {
-                            if (userid == obj.users[i].userid) {
-                                return i
-                            }
+                var username = obj.weekly[i].username
+                var userid = obj.weekly[i].userid
+                var printed = parseInt(obj.weekly[i].printed)
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (userid == obj.users[i].userid) {
+                            return i
                         }
                     }
-                    var userIndex = findIndex()
-                    if (typeof userIndex == 'number') {
-                        if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                            var person = await mainServer.members.fetch(obj.users[userIndex].discordid)
-                            function findLimit() {
-                                for (var i = 0; i < obj.ranks.length; i++) {
-                                    if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                        return obj.ranks[i].quota;
-                                    }
+                }
+                var userIndex = findIndex()
+                if (typeof userIndex == 'number') {
+                    if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
+                        var person = await mainServer.members.fetch(obj.users[userIndex].discordid)
+                        function findLimit() {
+                            for (var i = 0; i < obj.ranks.length; i++) {
+                                if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                    return obj.ranks[i].quota;
+                                } else {
+                                    return 1
                                 }
                             }
-                            var needed = parseInt(findLimit())
-                        } else {
-                            var needed = parseInt("NaN")
                         }
+                        var needed = parseInt(findLimit())
+                    } else {
+                        var needed = parseInt("NaN")
                     }
-                    if (typeof needed != 'undefined') {
-                        var percent = printed / needed * 100
-                        if (printed < needed || needed == 0) {
-                            var bonus = 0
-                        } else {
-                            var bonus = (printed - needed) * 0.01
-                        }
+                }
+                if (typeof needed != 'undefined') {
+                    var percent = printed / needed * 100
+                    if (printed < needed || needed == 0) {
+                        var bonus = 0
+                    } else {
+                        var bonus = (printed - needed) * 0.01
                     }
+                }
+                if (needed != 1) {
                     var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
                     if (needed == 0) {
                         nolist.push(toPush)
