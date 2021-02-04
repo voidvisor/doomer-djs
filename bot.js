@@ -539,6 +539,7 @@ client.on('message', msg => {
                 { name: '`printed (username)`', value: 'Shows the amount of money the user printed since joining the bank.', inline: true },
                 { name: '`link (username)`', value: 'Links your Discord account to your ROBLOX account to determine quota.', inline: true },
                 { name: '`unlink`', value: 'Unlinks your Discord account from your linked ROBLOX account so you can link a new one.', inline: true },
+                { name: '`suggest`', value: `Sends a suggestion to the bot's developer.`, inline: true },
                 { name: '**__Doom Bank Admin Commands__**', value: 'For the big boys.' },
                 { name: '`prefix (newPrefix)`', value: 'Changes the current bot prefix.', inline: true },
                 { name: '`manager (newRole)`', value: 'Changes the current manager role for the bot.', inline: true },
@@ -1072,7 +1073,8 @@ client.on('message', msg => {
         console.log('taking suggestion')
         var coolchannel = client.channels.cache.get("806153108827668490")
         console.log(coolchannel)
-        coolchannel.send(msg.content)
+
+        coolchannel.send(`New suggestion from ${msg.author.tag}: ${msg.content}`)
         console.log(msg.content)
         clearTimeout(timeout)
         identifier = ''
