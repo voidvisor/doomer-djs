@@ -420,6 +420,7 @@ client.on('ready', () => {
     }
 });
 client.on('message', msg => {
+    var identifier = identifier
     var jsonfile = fs.readFileSync(jsonname);
     var obj = JSON.parse(jsonfile);
     var prefix = obj.prefix;
@@ -1057,7 +1058,7 @@ client.on('message', msg => {
             identifier = ''
         }
         if (identifier == '' || typeof  identifier == 'undefined') {
-            var identifier = msg.author.id
+            identifier = msg.author.id
             console.log(msg.author.id)
             console.log(typeof msg.author.id)
             console.log(identifier)
