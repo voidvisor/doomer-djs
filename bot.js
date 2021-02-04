@@ -1059,14 +1059,18 @@ client.on('message', msg => {
         if (identifier == '' || typeof  identifier == 'undefined') {
             var identifier = msg.author.id
             msg.reply('listening to your suggestion.')
-            setTimeout(emptyIdentifier, 1000 * 60 * 10)
+            var timeout = setTimeout(emptyIdentifier, 1000 * 60 * 10)
         } else {
             msg.reply('currently already taking a suggestion.')
         }
     } else if (msg.author.id == identifier) {
+        console.log('taking suggestion')
         var coolchannel = client.channels.cache.get("806153108827668490")
+        console.log(coolchannel)
         coolchannel.send(msg.content)
-        identifier = ''
+        console.log(msg.content)
+        clearTimeout(timeout)
+        emptyIdentifier()
         var embed = new Discord.MessageEmbed()
             .setTitle("**Suggestion**")
             .setDescription(`Your suggestion has been registered and will be read by the bot's developer.`)
