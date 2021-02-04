@@ -1052,6 +1052,28 @@ client.on('message', msg => {
 
             msg.channel.send(embed);
         }
+    } else if (msg.content.startsWith(prefix + 'suggest')) {
+        function emptyIdentifier() {
+            identifier = ''
+        }
+        if (identifier == '' || typeof  identifier == 'undefined') {
+            var identifier = msg.author.id
+            msg.reply('listening to your suggestion.')
+            setTimeout(emptyIdentifier, 1000 * 60 * 10)
+        } else {
+            msg.reply('currently already taking a suggestion.')
+        }
+    } else if (msg.author.id == identifier) {
+        var coolchannel = client.channels.cache.get("806153108827668490")
+        coolchannel.send(msg.content)
+        identifier = ''
+        var embed = new Discord.MessageEmbed()
+            .setTitle("**Suggestion**")
+            .setDescription(`Your suggestion has been registered and will be read by the bot's developer.`)
+            .setTimestamp()
+            .setColor("0074F7");
+
+        msg.channel.send(embed);
     }
 });
 
