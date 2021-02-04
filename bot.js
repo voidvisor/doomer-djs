@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const jsonname = './jsconfig.json'
 const jsonname2 = './msg.json'
+var identifier
 
 const client = new Discord.Client();
 
@@ -420,7 +421,6 @@ client.on('ready', () => {
     }
 });
 client.on('message', msg => {
-    var identifier = identifier
     var jsonfile = fs.readFileSync(jsonname);
     var obj = JSON.parse(jsonfile);
     var prefix = obj.prefix;
