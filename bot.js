@@ -1075,7 +1075,7 @@ client.on('message', msg => {
         coolchannel.send(msg.content)
         console.log(msg.content)
         clearTimeout(timeout)
-        emptyIdentifier()
+        identifier = ''
         var embed = new Discord.MessageEmbed()
             .setTitle("**Suggestion**")
             .setDescription(`Your suggestion has been registered and will be read by the bot's developer.`)
