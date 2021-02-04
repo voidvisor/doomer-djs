@@ -1059,7 +1059,9 @@ client.on('message', msg => {
         if (identifier == '' || typeof  identifier == 'undefined') {
             var identifier = msg.author.id
             console.log(msg.author.id)
+            console.log(typeof msg.author.id)
             console.log(identifier)
+            console.log(typeof identifier)
             msg.reply('listening to your suggestion.')
             var timeout = setTimeout(emptyIdentifier, 1000 * 60 * 10)
         } else {
