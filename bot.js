@@ -35,7 +35,7 @@ client.on('ready', () => {
                         function personGetter() {
                             var person = mainServer.members.fetch(obj.users[userIndex].discordid)
                             person.then(function (result) {
-                                return person
+                                return result
                             }); person.catch(function () {
                                 return 0
                             })
