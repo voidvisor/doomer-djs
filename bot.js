@@ -1138,6 +1138,7 @@ client.on('message', msg => {
                             })
                         }
                         var theperson = await personGetter()
+                        console.log(theperson)
                         if (theperson != 0) {
                             function findLimit() {
                                 for (var i = 0; i < obj.ranks.length; i++) {
