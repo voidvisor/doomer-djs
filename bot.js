@@ -1107,106 +1107,106 @@ client.on('message', msg => {
     } else if (msg.content.startsWith(prefix + 'reset')) {
         if (msg.member.roles.cache.some(role => role.name === obj.manager)) {
             var jsonfile = fs.readFileSync(jsonname);
-            var obj = JSON.parse(jsonfile);
-            let quotachannel = client.channels.cache.get("778312068164091974");
-            var mainServer = client.guilds.cache.get("657255154273484801");
-            var positivelist = []
-            var negativelist = []
-            var neutrallist = []
-            var nolist = []
-            async function analyzer() {
-                for (var i = 0; i < obj.weekly.length; i++) {
-                    var username = obj.weekly[i].username
-                    var userid = obj.weekly[i].userid
-                    var printed = parseInt(obj.weekly[i].printed)
-                    function findIndex() {
-                        for (var i = 0; i < obj.users.length; i++) {
-                            if (userid == obj.users[i].userid) {
-                                return i
-                            }
+        var obj = JSON.parse(jsonfile);
+        let quotachannel = client.channels.cache.get("778312068164091974");
+        var mainServer = client.guilds.cache.get("657255154273484801");
+        var positivelist = []
+        var negativelist = []
+        var neutrallist = []
+        var nolist = []
+        async function analyzer() {
+            for (var i = 0; i < obj.weekly.length; i++) {
+                var username = obj.weekly[i].username
+                var userid = obj.weekly[i].userid
+                var printed = parseInt(obj.weekly[i].printed)
+                function findIndex() {
+                    for (var i = 0; i < obj.users.length; i++) {
+                        if (userid == obj.users[i].userid) {
+                            return i
                         }
                     }
-                    var userIndex = findIndex()
-                    if (typeof userIndex == 'number') {
-                        if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                            function personGetter() {
-                                var person = mainServer.members.fetch(obj.users[userIndex].discordid)
-                                person.then(function (result) {
-                                    return person
-                                }); person.catch(function () {
-                                    return 0
-                                })
-                            }
-                            theperson = await personGetter()
-                            if (theperson != 0) {
-                                function findLimit() {
-                                    for (var i = 0; i < obj.ranks.length; i++) {
-                                        if (theperson.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                            return obj.ranks[i].quota;
-                                        } else if (i == obj.ranks.length) {
-                                            return 1
-                                        }
+                }
+                var userIndex = findIndex()
+                if (typeof userIndex == 'number') {
+                    if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
+                        function personGetter() {
+                            var person = mainServer.members.fetch(obj.users[userIndex].discordid)
+                            person.then(function (result) {
+                                return result
+                            }); person.catch(function () {
+                                return 0
+                            })
+                        }
+                        var theperson = await personGetter()
+                        if (theperson != 0) {
+                            function findLimit() {
+                                for (var i = 0; i < obj.ranks.length; i++) {
+                                    if (theperson.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                        return obj.ranks[i].quota;
+                                    } else if (i == obj.ranks.length) {
+                                        return 1
                                     }
                                 }
-                                var needed = parseInt(findLimit())
-                            } else {
-                                var needed = 1
                             }
+                            var needed = parseInt(findLimit())
                         } else {
-                            var needed = parseInt("NaN")
+                            var needed = 1
                         }
+                    } else {
+                        var needed = parseInt("NaN")
                     }
-                    if (typeof needed != 'undefined') {
-                        var percent = printed / needed * 100
-                        if (printed < needed || needed == 0) {
-                            var bonus = 0
-                        } else {
-                            var bonus = (printed - needed) * 0.01
-                        }
-                    }
-                    if (needed != 1) {
-                        var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
-                        if (needed == 0) {
-                            nolist.push(toPush)
-                        } else if (percent >= 100) {
-                            positivelist.push(toPush)
-                        } else if (printed > 0) {
-                            neutrallist.push(toPush)
-                        } else {
-                            negativelist.push(toPush)
-                        }
-                    }
-                    obj.weekly[i].printed = "0"
                 }
-                fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
-                    if (err) return console.log(err);
-                    console.log(JSON.stringify(obj));
-                    console.log('writing to ' + jsonname);
-                });
-                return {
-                    positive: positivelist.join(''),
-                    neutral: neutrallist.join(''),
-                    negative: negativelist.join(''),
-                    noquota: nolist.join('')
+                if (typeof needed != 'undefined') {
+                    var percent = printed / needed * 100
+                    if (printed < needed || needed == 0) {
+                        var bonus = 0
+                    } else {
+                        var bonus = (printed - needed) * 0.01
+                    }
                 }
+                if (needed != 1) {
+                    var toPush = `**${username}**(${userid})\n${printed}/${needed}$ (${percent}%)\nBonus: ${bonus}$\n`
+                    if (needed == 0) {
+                        nolist.push(toPush)
+                    } else if (percent >= 100) {
+                        positivelist.push(toPush)
+                    } else if (printed > 0) {
+                        neutrallist.push(toPush)
+                    } else {
+                        negativelist.push(toPush)
+                    }
+                }
+                obj.weekly[i].printed = "0"
             }
-            console.log("Weekly reset initiated.")
             fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
                 if (err) return console.log(err);
                 console.log(JSON.stringify(obj));
                 console.log('writing to ' + jsonname);
             });
-            var analyze = analyzer()
-            analyze.then(function (result) {
-                quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have completed their quota this week.`);
-                quotachannel.send(`${result.positive}`)
-                quotachannel.send(`**Meh Boys** Those who haven't completed their quota this week.`)
-                quotachannel.send(`${result.neutral}`)
-                quotachannel.send(`**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.`)
-                quotachannel.send(`${result.negative}`)
-                quotachannel.send(`**No Quota** People who are exempt from the weekly quota.`)
-                quotachannel.send(`${result.noquota}`)
-            })
+            return {
+                positive: positivelist.join(''),
+                neutral: neutrallist.join(''),
+                negative: negativelist.join(''),
+                noquota: nolist.join('')
+            }
+        }
+        console.log("Weekly reset initiated.")
+        fs.writeFile(jsonname, JSON.stringify(obj, undefined, 2), function writeJSON(err) {
+            if (err) return console.log(err);
+            console.log(JSON.stringify(obj));
+            console.log('writing to ' + jsonname);
+        });
+        var analyze = analyzer()
+        analyze.then(function (result) {
+            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have completed their quota this week.`);
+            quotachannel.send(`${result.positive}`)
+            quotachannel.send(`**Meh Boys** Those who haven't completed their quota this week.`)
+            quotachannel.send(`${result.neutral}`)
+            quotachannel.send(`**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.`)
+            quotachannel.send(`${result.negative}`)
+            quotachannel.send(`**No Quota** People who are exempt from the weekly quota.`)
+            quotachannel.send(`${result.noquota}`)
+        })
         }
     }
 });
