@@ -32,13 +32,15 @@ client.on('ready', () => {
                 var userIndex = findIndex()
                 if (typeof userIndex == 'number') {
                     if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                        function personGetter() {
+                        async function personGetter() {
                             var person = mainServer.members.fetch(obj.users[userIndex].discordid)
                             person.then(function (result) {
-                                return result
+                                var toreturn = result
                             }); person.catch(function () {
-                                return 0
+                                var toreturn = 0
                             })
+                            var iamreturning = await toreturn
+                            return iamreturning
                         }
                         var theperson = await personGetter()
                         if (theperson != 0) {
@@ -1129,16 +1131,17 @@ client.on('message', msg => {
                 var userIndex = findIndex()
                 if (typeof userIndex == 'number') {
                     if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                        function personGetter() {
+                        async function personGetter() {
                             var person = mainServer.members.fetch(obj.users[userIndex].discordid)
                             person.then(function (result) {
-                                return result
+                                var toreturn = result
                             }); person.catch(function () {
-                                return 0
+                                var toreturn = 0
                             })
+                            var iamreturning = await toreturn
+                            return iamreturning
                         }
                         var theperson = await personGetter()
-                        console.log(theperson)
                         if (theperson != 0) {
                             function findLimit() {
                                 for (var i = 0; i < obj.ranks.length; i++) {
