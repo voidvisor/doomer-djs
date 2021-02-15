@@ -32,17 +32,29 @@ client.on('ready', () => {
                 var userIndex = findIndex()
                 if (typeof userIndex == 'number') {
                     if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                        var person = await mainServer.members.fetch(obj.users[userIndex].discordid)
-                        function findLimit() {
-                            for (var i = 0; i < obj.ranks.length; i++) {
-                                if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                    return obj.ranks[i].quota;
-                                } else {
-                                    return 1
+                        function personGetter() {
+                            var person = mainServer.members.fetch(obj.users[userIndex].discordid)
+                            person.then(function (result) {
+                                return person
+                            }); person.catch(function () {
+                                return 0
+                            })
+                        }
+                        theperson = await personGetter()
+                        if (theperson != 0) {
+                            function findLimit() {
+                                for (var i = 0; i < obj.ranks.length; i++) {
+                                    if (theperson.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                        return obj.ranks[i].quota;
+                                    } else if (i == obj.ranks.length) {
+                                        return 1
+                                    }
                                 }
                             }
+                            var needed = parseInt(findLimit())
+                        } else {
+                            var needed = 1
                         }
-                        var needed = parseInt(findLimit())
                     } else {
                         var needed = parseInt("NaN")
                     }
@@ -89,7 +101,14 @@ client.on('ready', () => {
         });
         var analyze = analyzer()
         analyze.then(function (result) {
-            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have completed their quota this week.\n${result.positive}\n**Meh Boys** Those who haven't completed their quota this week.\n${result.neutral}\n**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.\n${result.negative}\n**No Quota** People who are exempt from the weekly quota.\n${result.noquota}`);
+            quotachannel.send(`**Weekly Quota analysis**\n**Good Boys** Those who have completed their quota this week.`);
+            quotachannel.send(`${result.positive}`)
+            quotachannel.send(`**Meh Boys** Those who haven't completed their quota this week.`)
+            quotachannel.send(`${result.neutral}`)
+            quotachannel.send(`**Bad Boys** Those who are terrible bankers and ended the week with a negative quota.`)
+            quotachannel.send(`${result.negative}`)
+            quotachannel.send(`**No Quota** People who are exempt from the weekly quota.`)
+            quotachannel.send(`${result.noquota}`)
         })
     }
     function scheduleReset(time, triggerThis) {
@@ -1110,17 +1129,29 @@ client.on('message', msg => {
                     var userIndex = findIndex()
                     if (typeof userIndex == 'number') {
                         if (obj.users[userIndex].discordid != '' && typeof obj.users[userIndex].discordid == 'string' && obj.users[userIndex].discordid != 'undefined') {
-                            var person = await mainServer.members.fetch(obj.users[userIndex].discordid)
-                            function findLimit() {
-                                for (var i = 0; i < obj.ranks.length; i++) {
-                                    if (person.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
-                                        return obj.ranks[i].quota;
-                                    } else if (i == obj.ranks.length) {
-                                        return 1
+                            function personGetter() {
+                                var person = mainServer.members.fetch(obj.users[userIndex].discordid)
+                                person.then(function (result) {
+                                    return person
+                                }); person.catch(function () {
+                                    return 0
+                                })
+                            }
+                            theperson = await personGetter()
+                            if (theperson != 0) {
+                                function findLimit() {
+                                    for (var i = 0; i < obj.ranks.length; i++) {
+                                        if (theperson.roles.cache.some(role => role.name === obj.ranks[i].rank)) {
+                                            return obj.ranks[i].quota;
+                                        } else if (i == obj.ranks.length) {
+                                            return 1
+                                        }
                                     }
                                 }
+                                var needed = parseInt(findLimit())
+                            } else {
+                                var needed = 1
                             }
-                            var needed = parseInt(findLimit())
                         } else {
                             var needed = parseInt("NaN")
                         }
