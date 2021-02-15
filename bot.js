@@ -40,7 +40,7 @@ client.on('ready', () => {
                                 return 0
                             })
                         }
-                        theperson = await personGetter()
+                        var theperson = await personGetter()
                         if (theperson != 0) {
                             function findLimit() {
                                 for (var i = 0; i < obj.ranks.length; i++) {
